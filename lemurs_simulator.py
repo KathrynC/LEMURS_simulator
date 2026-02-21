@@ -40,6 +40,7 @@ import math
 from constants import (
     INTERVENTION_NAMES, INTERVENTION_BOUNDS, DEFAULT_INTERVENTION,
     PATIENT_NAMES, PATIENT_BOUNDS, DEFAULT_PATIENT,
+    STATE_NAMES,
 )
 from simulator import simulate
 from analytics import compute_all
@@ -152,3 +153,51 @@ class LEMURSSimulator:
                 flat[key] = v
 
         return flat
+
+    def to_standard_output(self, params: dict) -> dict:
+        """Run simulation and return shared output schema dict.
+
+        Produces the zimmerman-toolkit SimulatorOutput format
+        for cross-simulator analysis and comparison.
+        """
+        import sys
+        from pathlib import Path
+        _ZT_PATH = str(Path(__file__).resolve().parent.parent / "zimmerman-toolkit")
+        if _ZT_PATH not in sys.path:
+            sys.path.insert(0, _ZT_PATH)
+        from zimmerman.output_schema import SimulatorOutput
+
+        # Split params
+        intervention = dict(DEFAULT_INTERVENTION)
+        patient = dict(DEFAULT_PATIENT)
+        for k, v in params.items():
+            if k in INTERVENTION_BOUNDS:
+                intervention[k] = v
+            elif k in PATIENT_BOUNDS:
+                patient[k] = v
+
+        # Run simulation
+        result = simulate(intervention=intervention, patient=patient)
+
+        # Compute analytics (with baseline for intervention pillar)
+        baseline_result = simulate(
+            intervention=dict(DEFAULT_INTERVENTION),
+            patient=patient,
+        )
+        analytics_result = compute_all(result, baseline=baseline_result)
+
+        output = SimulatorOutput(
+            simulator_name="lemurs",
+            simulator_description="14-state college student biopsychosocial ODE (15-week semester)",
+            state_dim=14,
+            param_dim=12,
+            state_names=list(STATE_NAMES),
+            time_unit="weeks",
+            time_horizon=15.0,
+            times=result["times"],
+            states=result["states"],
+            pillars=analytics_result,
+            input_params=params,
+            param_bounds=dict(self.param_spec()),
+        )
+        return output.to_dict()
