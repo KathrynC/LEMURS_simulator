@@ -145,6 +145,40 @@ Eight representative student profiles are included in `constants.STUDENT_ARCHETY
 | `digital_immersed` | No nature, high academic load | Tests attention depletion and burnout trap |
 | `recovery_trajectory` | Starts anxious, full intervention package | Tests whether combined intervention can overcome high vulnerability |
 
+### Archetype Construction Methodology
+
+The 8 archetypes were constructed entirely from quantitative findings reported in the published LEMURS papers, without access to individual-level data or unpublished study materials. Each archetype is a theoretically motivated parameter combination designed to exercise specific coupling pathways in ways the published literature predicts will produce distinct dynamical trajectories. They are simulation seeds, not empirical portraits.
+
+**How parameter values were chosen.** Every value traces to a specific published coefficient, reported population statistic, or documented scale range:
+
+- **Emotional stability values** (3.0 for vulnerable, 6.0 for resilient) are positioned relative to the adjusted odds ratio reported in Bloomfield et al. (2024, JAACAP Open): AOR = 0.58 per point, making it the strongest protective factor against anxiety development. The resilient archetypes are set near the top of the 1-7 Likert scale; the vulnerable archetypes are set in the lower range where the AOR compounds multiplicatively in the anxiety Markov dynamics.
+
+- **Trauma and MH diagnosis flags** reflect the published risk factors from Paper 4: prior mental health diagnosis (AOR = 2.10), trauma history (AOR = 1.80), and academic stressors (AOR = 1.68). The vulnerable_female archetype combines all three risk factors; the resilient archetypes have none.
+
+- **Chronotype values** (MSF_free in hours) are drawn from the range reported in Fudolig et al. (2025, npj Complexity). The sleep_deprived archetype uses MSF = 6.5h (extreme late chronotype) to maximize the social jetlag cascade quantified in that paper. The resilient_female uses 3.5h (early chronotype, minimal social jetlag).
+
+- **Gender assignments** test the +2.956 PSS gender-level shift from Paper 3 and the gender-modulated sleep phenotype coupling from Paper 2 (female + MH diagnosis shifts toward disrupted Cluster 1).
+
+- **Intervention parameter values** (e.g., nature_rx = 0.8 for the nature_seeker) are positioned to produce effects comparable to the published intervention effect sizes: nature engagement reduces PSS by -1.507 per unit (Paper 7), and therapy independently reduces DASS stress and respiratory rate.
+
+- **Population-level statistics** from the papers (e.g., "30% cross GAD-7 >= 10," "~50% of male students maintain sub-clinical anxiety") are used for validation — confirming that the archetype ensemble produces outcome distributions consistent with published prevalence rates — not for parameter fitting.
+
+**What the archetypes are not.** The archetypes are not derived from cluster analysis of individual participant data. They do not represent specific LEMURS study participants. No archetype parameter was chosen by fitting to unpublished individual-level time series. Where the papers report continuous distributions rather than discrete profiles, values were selected at clinically meaningful positions (e.g., 1 standard deviation above or below reported means, or at published risk thresholds).
+
+### Data Provenance Statement
+
+I, Kathryn Cramer, am the creator of this simulation. I have **no access to non-public data** associated with the LEMURS (Lived Experiences Measured Using Rings Study) project conducted at the University of Vermont.
+
+All model parameters, coupling coefficients, state variable ranges, and student archetype definitions in this simulator were derived exclusively from information available in the 9 published or preprint papers listed in the Source Papers section below. Specifically:
+
+- All regression coefficients (e.g., beta_TST_PSS = -0.877, PSS gender shift = +2.956) are taken from published tables and figures.
+- All adjusted odds ratios for anxiety dynamics (AOR values for emotional stability, MH diagnosis, trauma, academic stressors) are reported in Bloomfield et al. (2024, JAACAP Open).
+- All sleep parameters (weekday debt of 37-55 min, social jetlag formulas, chronotype ranges) are from Fudolig et al. (2025, npj Complexity) and Bloomfield et al. (2024, Digital Biomarkers).
+- All nature-stress mediation coefficients are from Bloomfield et al. (2025, preprint).
+- Population-level statistics (e.g., "30% cross GAD-7 >= 10") are from the published papers and used for validation, not for fitting.
+
+I have had no communication with the LEMURS research team (Peter Dodds, Chris Danforth, or their collaborators at UVM) regarding unpublished data, individual participant records, or internal study materials. This simulator is an independent computational interpretation of publicly available research findings.
+
 ## Architecture
 
 ```
