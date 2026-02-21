@@ -13,9 +13,19 @@ Implements the Zimmerman protocol (`run()` + `param_spec()`), compatible with zi
 ```bash
 python simulator.py                    # standalone: 8 student archetypes
 python visualize.py                    # generate all plots to output/
-python -m pytest tests/ -v             # full test suite
+python -m pytest tests/ -v             # full test suite (152 tests)
 python -m pytest tests/test_simulator.py -v
 python -c "from lemurs_simulator import LEMURSSimulator; s = LEMURSSimulator(); print(s.run({}))"
+
+# Zimmerman toolkit analysis (requires ~/zimmerman-toolkit)
+python zimmerman_analysis.py                           # all 14 tools (~1 min at n_base=32)
+python zimmerman_analysis.py --tools sobol             # Sobol only
+python zimmerman_analysis.py --tools sobol --n-base 256  # full Sobol (~7 min, 6656 sims)
+python zimmerman_analysis.py --tools falsifier         # falsification (200 tests)
+python zimmerman_analysis.py --tools contrastive       # contrastive pairs
+python zimmerman_analysis.py --tools sobol,falsifier,locality  # multiple tools
+python zimmerman_analysis.py --student vulnerable_female  # intervention-only mode (6D)
+python zimmerman_analysis.py --intervention-only       # 6D mode, default student
 ```
 
 ## Architecture
@@ -26,11 +36,12 @@ simulator.py           <- initial_state(), derivatives() (6-tier coupling), RK4,
 analytics.py           <- 4-pillar compute_all(), NumpyEncoder
 lemurs_simulator.py    <- LEMURSSimulator (Zimmerman protocol adapter)
 zimmerman_bridge.py    <- Dual-mode bridge (12D or 6D intervention-only)
+zimmerman_analysis.py  <- Full 14-tool Zimmerman analysis runner + CLI
 kcramer_bridge.py      <- 19 stress scenarios in 7 banks
 visualize.py           <- 4-panel trajectory plots, spring break highlighting
 ```
 
-Dependency graph: `constants <- simulator <- analytics <- lemurs_simulator`, `visualize <- simulator + constants`.
+Dependency graph: `constants <- simulator <- analytics <- lemurs_simulator`, `zimmerman_analysis <- zimmerman_bridge + zimmerman-toolkit`, `visualize <- simulator + constants`.
 
 ## State Variables (14D)
 
