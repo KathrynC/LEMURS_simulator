@@ -86,7 +86,7 @@ python simulator.py
 # Generate 4-panel trajectory plots
 python visualize.py
 
-# Run the test suite (152 tests)
+# Run the test suite (229 tests)
 python -m pytest tests/ -v
 ```
 
@@ -136,17 +136,23 @@ Eight representative student profiles are included in `constants.STUDENT_ARCHETY
 ## Architecture
 
 ```
-constants.py           14D state, 12D params, coupling constants, 8 archetypes, semester calendar
-simulator.py           initial_state(), derivatives() (6-tier coupling), RK4, simulate()
-analytics.py           4-pillar compute_all(), NumpyEncoder
-lemurs_simulator.py    LEMURSSimulator (Zimmerman protocol adapter)
-zimmerman_bridge.py    Dual-mode bridge (12D full or 6D intervention-only)
-zimmerman_analysis.py  14-tool Zimmerman analysis runner + CLI
-kcramer_bridge.py      19 stress scenarios in 7 banks, 5 reference protocols
-visualize.py           4-panel trajectory plots, spring break highlighting
+constants.py              14D state, 12D params, coupling constants, 8 archetypes, semester calendar
+simulator.py              initial_state(), derivatives() (6-tier coupling), RK4, simulate()
+analytics.py              4-pillar compute_all(), NumpyEncoder
+lemurs_simulator.py       LEMURSSimulator (Zimmerman protocol adapter)
+zimmerman_bridge.py       Dual-mode bridge (12D full or 6D intervention-only)
+zimmerman_analysis.py     14-tool Zimmerman analysis runner + CLI
+kcramer_bridge.py         19 stress scenarios in 7 banks, 5 reference protocols
+visualize.py              4-panel trajectory plots, spring break highlighting
+
+ca_schema.py              Semantic CA: 14-variable bin schema, discretize/exemplar round-trip
+ca_rules.py               Semantic CA: 32 tiered rules (6 tiers + cross-tier compounds), JSON-serializable
+ca_simulator.py           Semantic CA: single-cell stepper + NxN population grid with social coupling
+ca_analytics.py           Semantic CA: rule firing stats, cascade detection, attractor ID, ODE fidelity
+ca_zimmerman_bridge.py    Semantic CA: LEMURSCASimulator + LEMURSPopulationSimulator (Zimmerman adapters)
 ```
 
-**Dependency graph:** `constants <- simulator <- analytics <- lemurs_simulator`, `zimmerman_analysis <- zimmerman_bridge + zimmerman-toolkit`, `visualize <- simulator + constants`.
+**Dependency graph:** `constants <- simulator <- analytics <- lemurs_simulator`, `zimmerman_analysis <- zimmerman_bridge + zimmerman-toolkit`, `visualize <- simulator + constants`, `ca_schema <- ca_rules <- ca_simulator <- ca_analytics`, `ca_zimmerman_bridge <- ca_simulator + ca_analytics`.
 
 ### 4-Pillar Analytics
 
@@ -216,6 +222,88 @@ python zimmerman_analysis.py --student vulnerable_female
 **Available tools:** Sobol sensitivity, Falsifier, Contrastive, Contrast Sets, PDS Mapper, POSIWID Auditor, Prompt Builder, Locality Profiler, Relation Graph, Diegeticizer, Token Extispicy, Receptive Field, Supradiegetic Benchmark, Dashboard.
 
 Reports are saved as JSON to `artifacts/zimmerman/` with a compiled markdown dashboard.
+
+## Semantic Cellular Automaton
+
+The CA layer discretizes the 14D continuous ODE state into clinically meaningful bins and simulates state transitions using tiered rules derived from the same published coupling structure. It provides an interpretable, rule-based complement to the continuous ODE -- local rules composing into global dynamics (bistability, burnout traps, spring break recovery).
+
+### State Discretization
+
+Each of the 14 state variables is mapped to 2-4 bins with clinically grounded thresholds:
+
+| Variable | Bins | Thresholds | Basis |
+|----------|------|------------|-------|
+| TST | deprived / adequate / excess | 6h, 8h | Paper 3 sleep debt |
+| GAD7 | sub_threshold / clinical | 10 | Paper 4 bistability |
+| PSS | low / moderate / high | 14, 27 | PSS clinical norms |
+| DAC | depleted / available | 0.3 | Paper 8 attention trap |
+| NatureEngagement | low / engaged | 3h/wk | Paper 7 dose threshold |
+
+### Rule Table
+
+32 rules organized by ODE coupling tier, each with input bin conditions, output bin updates, confidence weight, and paper citation. Rules are JSON-serializable for inspection and editing.
+
+Key dynamics captured:
+- **Burnout cascade** (absorbing state): when TST=deprived, PSS=high, DAC=depleted, GAD7=clinical simultaneously, all restoration pathways are blocked and the state freezes
+- **Spring break reset**: removes institutional forcing, tests recovery capacity
+- **Within-person amplification**: TST bin drops from personal baseline trigger 2.2x stress rule strength
+- **Confidence-based conflict resolution**: when multiple rules update the same variable, highest confidence wins
+
+### Simulation Modes
+
+**Single-cell** — one student, 105 daily steps:
+```python
+from ca_simulator import run_single_cell
+result = run_single_cell(
+    patient={"emotional_stability": 3.0, "mh_diagnosis": 1},
+    intervention={"nature_rx": 0.8},
+)
+print(result["final_state"])    # {"TST": "adequate", "GAD7": "clinical", ...}
+print(len(result["rule_log"]))  # 105 days of rule firing logs
+```
+
+**Population grid** — NxN students with shared institutional forcing and optional social coupling:
+```python
+from ca_simulator import run_population_grid
+result = run_population_grid(
+    grid_size=5, social_coupling=0.3,
+    intervention={"nature_rx": 0.5},
+)
+print(result["population_summary"]["burnout_fraction"])
+```
+
+### CA Analytics
+
+```python
+from ca_analytics import compute_ca_analytics
+analytics = compute_ca_analytics(ca_result, ode_result=ode_result)
+# Returns: rule_stats, cascade_stats, attractor_stats, fidelity_stats, spring_break
+```
+
+| Section | Metrics |
+|---------|---------|
+| Rule stats | Firing frequency, unique rules, mean rules/day, top-10 rules |
+| Cascade stats | Multi-tier chain reactions, max cascade length |
+| Attractor stats | Terminal state classification (healthy/struggling/stressed/burnout), stability |
+| Fidelity stats | Per-variable bin agreement rate between CA and ODE trajectories |
+| Spring break | State before vs after break, variables that changed |
+
+### CA Zimmerman Bridges
+
+Both CA modes are Zimmerman-protocol compatible:
+
+```python
+from ca_zimmerman_bridge import LEMURSCASimulator, LEMURSPopulationSimulator
+
+# Single-cell CA (same 12D param_spec as ODE simulator)
+sim = LEMURSCASimulator()
+result = sim.run({"nature_rx": 0.8})  # -> {"ca_final_attractor": 0.0, ...}
+
+# Population grid CA (12D + grid_size + social_coupling)
+pop = LEMURSPopulationSimulator()
+result = pop.run({"grid_size": 5, "social_coupling": 0.3})
+# -> {"pop_burnout_frac": 0.04, "pop_clinical_anxiety_frac": 0.12, ...}
+```
 
 ## Simulation Details
 

@@ -13,7 +13,7 @@ Implements the Zimmerman protocol (`run()` + `param_spec()`), compatible with zi
 ```bash
 python simulator.py                    # standalone: 8 student archetypes
 python visualize.py                    # generate all plots to output/
-python -m pytest tests/ -v             # full test suite (152 tests)
+python -m pytest tests/ -v             # full test suite (229 tests)
 python -m pytest tests/test_simulator.py -v
 python -c "from lemurs_simulator import LEMURSSimulator; s = LEMURSSimulator(); print(s.run({}))"
 
@@ -26,22 +26,32 @@ python zimmerman_analysis.py --tools contrastive       # contrastive pairs
 python zimmerman_analysis.py --tools sobol,falsifier,locality  # multiple tools
 python zimmerman_analysis.py --student vulnerable_female  # intervention-only mode (6D)
 python zimmerman_analysis.py --intervention-only       # 6D mode, default student
+
+# Semantic CA
+python -c "from ca_simulator import run_single_cell; r = run_single_cell(); print(r['final_state'])"
+python -c "from ca_zimmerman_bridge import LEMURSCASimulator; s = LEMURSCASimulator(); print(s.run({}))"
+python -m pytest tests/test_ca.py -v  # CA test suite (77 tests)
 ```
 
 ## Architecture
 
 ```
-constants.py           <- 14D state, 12D params, coupling constants, 8 archetypes, semester calendar
-simulator.py           <- initial_state(), derivatives() (6-tier coupling), RK4, simulate()
-analytics.py           <- 4-pillar compute_all(), NumpyEncoder
-lemurs_simulator.py    <- LEMURSSimulator (Zimmerman protocol adapter)
-zimmerman_bridge.py    <- Dual-mode bridge (12D or 6D intervention-only)
-zimmerman_analysis.py  <- Full 14-tool Zimmerman analysis runner + CLI
-kcramer_bridge.py      <- 19 stress scenarios in 7 banks
-visualize.py           <- 4-panel trajectory plots, spring break highlighting
+constants.py              <- 14D state, 12D params, coupling constants, 8 archetypes, semester calendar
+simulator.py              <- initial_state(), derivatives() (6-tier coupling), RK4, simulate()
+analytics.py              <- 4-pillar compute_all(), NumpyEncoder
+lemurs_simulator.py       <- LEMURSSimulator (Zimmerman protocol adapter)
+zimmerman_bridge.py       <- Dual-mode bridge (12D or 6D intervention-only)
+zimmerman_analysis.py     <- Full 14-tool Zimmerman analysis runner + CLI
+kcramer_bridge.py         <- 19 stress scenarios in 7 banks
+visualize.py              <- 4-panel trajectory plots, spring break highlighting
+ca_schema.py              <- Semantic CA: 14-variable bin schema, discretize/exemplar
+ca_rules.py               <- Semantic CA: 32 tiered rules (6 tiers + cross-tier compounds)
+ca_simulator.py           <- Semantic CA: single-cell stepper + NxN population grid
+ca_analytics.py           <- Semantic CA: rule stats, cascades, attractors, ODE fidelity
+ca_zimmerman_bridge.py    <- Semantic CA: LEMURSCASimulator + LEMURSPopulationSimulator
 ```
 
-Dependency graph: `constants <- simulator <- analytics <- lemurs_simulator`, `zimmerman_analysis <- zimmerman_bridge + zimmerman-toolkit`, `visualize <- simulator + constants`.
+Dependency graph: `constants <- simulator <- analytics <- lemurs_simulator`, `zimmerman_analysis <- zimmerman_bridge + zimmerman-toolkit`, `visualize <- simulator + constants`, `ca_schema <- ca_rules <- ca_simulator <- ca_analytics`, `ca_zimmerman_bridge <- ca_simulator + ca_analytics`.
 
 ## State Variables (14D)
 
@@ -86,6 +96,22 @@ Dependency graph: `constants <- simulator <- analytics <- lemurs_simulator`, `zi
 - **Spring break phase transition:** Week 8 removes all institutional constraints -- no school-day forcing, no sleep debt, no academic stressors. Sleep recovers, activity drops, stress temporarily abates. The week-long perturbation reveals which students bounce back and which have accumulated too much damage.
 - **Gender-modulated sleep shape coupling:** Female students with MH diagnoses (SHAPE_FEMALE_MH_COEFF=0.3) or trauma history (SHAPE_FEMALE_TRAUMA_COEFF=0.2) shift toward the disrupted sleep phenotype (Cluster 1). Male students show weak/no coupling. Nonbinary students show trauma coupling only.
 - **Perceived vs quantified nature paradox:** Perceived nature engagement predicts well-being improvement; GPS-measured green space exposure without subjective engagement does NOT -- and paradoxically predicts slightly higher depression (BETA_GPS_NATURE_DEP=+0.032). The engagement_quality gate (DAC * threshold function) operationalizes this.
+
+## Semantic Cellular Automaton
+
+The CA layer discretizes the 14D continuous ODE state into clinically meaningful bins and simulates state transitions using tiered rules. Provides an interpretable complement to the continuous ODE.
+
+- **ca_schema.py**: BIN_SCHEMA maps 14 vars to 2-4 bins each (e.g., TST: deprived/adequate/excess at 6h, 8h). `discretize_state()` and `continuous_exemplar()` for round-tripping.
+- **ca_rules.py**: 32 rules in RULE_TABLE, organized by ODE coupling tier (1-6) + cross-tier compounds. Each rule: `(input_bins, context) -> (output_updates, confidence, citation)`. JSON-serializable. Conflict resolution: highest confidence wins.
+- **ca_simulator.py**: `run_single_cell()` for one student over 105 days. `run_population_grid()` for NxN grid with shared institutional forcing and optional social coupling. Uses `constants.is_weekday()`, `is_school_day()`, `week_of_semester()` for calendar.
+- **ca_analytics.py**: `compute_ca_analytics()` returns 5 sections: rule_stats, cascade_stats, attractor_stats (healthy/struggling/stressed/burnout), fidelity_stats (CA-vs-ODE bin agreement), spring_break diagnostic.
+- **ca_zimmerman_bridge.py**: `LEMURSCASimulator` (same 12D param_spec as ODE) and `LEMURSPopulationSimulator` (12D + grid_size + social_coupling). Both Zimmerman-protocol compatible.
+
+Key CA dynamics:
+- **Burnout cascade** is an absorbing state -- when all 4 conditions met (deprived/high/depleted/clinical), state freezes
+- **Spring break reset** removes institutional forcing, tests recovery
+- **Within-person amplification** via `tst_bin_dropped` context flag (Paper 3: 2.2x)
+- **Social coupling** in population mode: neighbor majority influence filtered through coupling probability
 
 ## Conventions
 
