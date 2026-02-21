@@ -38,6 +38,7 @@ from ca_simulator import (
 )
 from ca_analytics import (
     compute_ca_analytics,
+    compute_population_analytics,
     _rule_stats, _cascade_stats, _attractor_stats,
     _fidelity_stats, _spring_break_diagnostic,
     _classify_attractor,
@@ -45,6 +46,16 @@ from ca_analytics import (
 from ca_zimmerman_bridge import (
     LEMURSCASimulator, LEMURSPopulationSimulator,
 )
+from ca_stochastic import (
+    apply_rules_stochastic, run_single_cell_stochastic,
+    compute_ensemble_analytics,
+)
+from ca_zimmerman_bridge import LEMURSCAEnsembleSimulator
+from ca_visualize import (
+    plot_ca_trajectory, plot_rule_timeline, plot_ca_fidelity,
+    plot_population_grid,
+)
+from simulator import simulate
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -444,12 +455,16 @@ class TestPopulationGrid:
     def test_social_coupling_optional(self):
         """Grid should work with social_coupling=0 (independent cells)."""
         result = run_population_grid(grid_size=3, sim_days=7, social_coupling=0.0)
-        assert result["social_coupling"] == 0.0
+        assert isinstance(result["social_coupling"], dict)
+        for ch in ("nature", "activity", "stress", "sleep", "anxiety"):
+            assert result["social_coupling"][ch] == 0.0
 
     def test_social_coupling_nonzero(self):
         """Grid should work with social_coupling > 0."""
         result = run_population_grid(grid_size=3, sim_days=7, social_coupling=0.5)
-        assert result["social_coupling"] == 0.5
+        assert isinstance(result["social_coupling"], dict)
+        for ch in ("nature", "activity", "stress", "sleep", "anxiety"):
+            assert result["social_coupling"][ch] == 0.5
 
     def test_population_summary_has_keys(self):
         """Population summary should contain expected metrics."""
@@ -653,3 +668,187 @@ class TestZimmermanBridge:
         result = sim.run({})
         for key, value in result.items():
             assert not np.isnan(value), f"{key} is NaN"
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TestCAVisualization
+# ══════════════════════════════════════════════════════════════════════════════
+
+class TestCAVisualization:
+    """CA visualization: trajectory heatmap, rule timeline, fidelity, population grid."""
+
+    def test_trajectory_plot_creates_file(self, tmp_path):
+        """plot_ca_trajectory should produce a non-empty PNG file."""
+        ca_result = run_single_cell()
+        out = str(tmp_path / "trajectory.png")
+        plot_ca_trajectory(ca_result, "Test Trajectory", out)
+        assert os.path.exists(out)
+        assert os.path.getsize(out) > 0
+
+    def test_rule_timeline_creates_file(self, tmp_path):
+        """plot_rule_timeline should produce a non-empty PNG file."""
+        ca_result = run_single_cell()
+        out = str(tmp_path / "rules.png")
+        plot_rule_timeline(ca_result, "Test Rules", out)
+        assert os.path.exists(out)
+        assert os.path.getsize(out) > 0
+
+    def test_fidelity_plot_creates_file(self, tmp_path):
+        """plot_ca_fidelity should produce a non-empty PNG file."""
+        ca_result = run_single_cell()
+        ode_result = simulate()
+        out = str(tmp_path / "fidelity.png")
+        plot_ca_fidelity(ca_result, ode_result, "Test Fidelity", out)
+        assert os.path.exists(out)
+        assert os.path.getsize(out) > 0
+
+    def test_population_grid_creates_file(self, tmp_path):
+        """plot_population_grid should produce a non-empty PNG file."""
+        pop_result = run_population_grid(grid_size=3, social_coupling=0.2)
+        out = str(tmp_path / "population.png")
+        plot_population_grid(pop_result, output_path=out)
+        assert os.path.exists(out)
+        assert os.path.getsize(out) > 0
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TestSocialCoupling
+# ══════════════════════════════════════════════════════════════════════════════
+
+class TestSocialCoupling:
+    """Tests for expanded social coupling channels."""
+
+    def test_stress_contagion_runs(self):
+        result = run_population_grid(
+            grid_size=3,
+            social_coupling={"nature": 0.0, "activity": 0.0, "stress": 0.8,
+                             "sleep": 0.0, "anxiety": 0.0},
+            seed=42,
+        )
+        assert "population_summary" in result
+
+    def test_sleep_norm_influence_runs(self):
+        result = run_population_grid(
+            grid_size=3,
+            social_coupling={"nature": 0.0, "activity": 0.0, "stress": 0.0,
+                             "sleep": 0.8, "anxiety": 0.0},
+            seed=42,
+        )
+        assert "population_summary" in result
+
+    def test_anxiety_diffusion_runs(self):
+        result = run_population_grid(
+            grid_size=3,
+            social_coupling={"nature": 0.0, "activity": 0.0, "stress": 0.0,
+                             "sleep": 0.0, "anxiety": 0.8},
+            seed=42,
+        )
+        assert "population_summary" in result
+
+    def test_dict_coupling_config_in_result(self):
+        result = run_population_grid(grid_size=3, social_coupling=0.3, seed=42)
+        assert isinstance(result["social_coupling"], dict)
+        assert "stress" in result["social_coupling"]
+        assert "sleep" in result["social_coupling"]
+        assert "anxiety" in result["social_coupling"]
+
+    def test_all_channels_active(self):
+        result = run_population_grid(
+            grid_size=3,
+            social_coupling={"nature": 0.5, "activity": 0.5, "stress": 0.5,
+                             "sleep": 0.5, "anxiety": 0.5},
+            seed=42,
+        )
+        assert result["population_summary"]["total_students"] == 9
+
+    def test_population_analytics(self):
+        pop_result = run_population_grid(grid_size=3, social_coupling=0.3, seed=42)
+        analytics = compute_population_analytics(pop_result)
+        assert "attractor_distribution" in analytics
+        assert "attractor_fractions" in analytics
+        assert "largest_stressed_cluster" in analytics
+        total_fracs = sum(analytics["attractor_fractions"].values())
+        assert abs(total_fracs - 1.0) < 1e-6
+
+    def test_largest_cluster_bounded(self):
+        pop_result = run_population_grid(grid_size=3, social_coupling=0.3, seed=42)
+        analytics = compute_population_analytics(pop_result)
+        assert 0 <= analytics["largest_stressed_cluster"] <= 9
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TestStochastic
+# ══════════════════════════════════════════════════════════════════════════════
+
+class TestStochastic:
+    """Stochastic rule engine and ensemble tests."""
+
+    def test_stochastic_rules_produce_valid_state(self):
+        ca_result = run_single_cell()
+        state = ca_result["trajectory"][50]
+        ctx = _build_context(50, DEFAULT_PATIENT, DEFAULT_INTERVENTION)
+        rng = np.random.default_rng(42)
+        new_state, fired = apply_rules_stochastic(state, ctx, rng)
+        for var_name in _VAR_ORDER:
+            assert new_state[var_name] in BIN_SCHEMA[var_name]["labels"]
+
+    def test_ensemble_runs(self):
+        result = run_single_cell_stochastic(n_trials=10, seed=42)
+        assert len(result["trajectories"]) == 10
+        assert len(result["final_states"]) == 10
+
+    def test_ensemble_analytics(self):
+        result = run_single_cell_stochastic(n_trials=20, seed=42)
+        analytics = compute_ensemble_analytics(result)
+        assert 0.0 <= analytics["burnout_probability"] <= 1.0
+        assert 0.0 <= analytics["anxiety_crossing_probability"] <= 1.0
+        total_prob = sum(analytics["attractor_probabilities"].values())
+        assert abs(total_prob - 1.0) < 1e-6
+
+    def test_ensemble_deterministic_same_seed(self):
+        r1 = run_single_cell_stochastic(n_trials=5, seed=42)
+        r2 = run_single_cell_stochastic(n_trials=5, seed=42)
+        for i in range(5):
+            assert r1["final_states"][i] == r2["final_states"][i]
+
+    def test_burnout_cascade_still_absorbing(self):
+        burnout_state = {
+            "TST": "deprived", "SleepQuality": "poor", "PSS": "high",
+            "GAD7": "clinical", "Depression": "moderate_plus", "Activity": "sedentary",
+            "NatureEngagement": "low", "RHR": "elevated", "HRV": "low",
+            "ARR": "elevated", "SocialJetlag": "misaligned", "SleepShape": "disrupted",
+            "WEMWBS": "low", "DAC": "depleted",
+        }
+        ctx = _build_context(50, DEFAULT_PATIENT, DEFAULT_INTERVENTION)
+        rng = np.random.default_rng(42)
+        new_state, _ = apply_rules_stochastic(burnout_state, ctx, rng)
+        assert new_state == burnout_state
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TestEnsembleBridge
+# ══════════════════════════════════════════════════════════════════════════════
+
+class TestEnsembleBridge:
+    """Zimmerman adapter for stochastic ensemble."""
+
+    def test_ensemble_simulator_runs(self):
+        sim = LEMURSCAEnsembleSimulator(n_trials=5)
+        result = sim.run({})
+        assert isinstance(result, dict)
+        assert "ens_burnout_probability" in result
+        assert "ens_anxiety_crossing_prob" in result
+
+    def test_ensemble_param_spec(self):
+        sim = LEMURSCAEnsembleSimulator()
+        spec = sim.param_spec()
+        assert len(spec) == 12
+
+    def test_ensemble_all_values_finite(self):
+        import math as _math
+        sim = LEMURSCAEnsembleSimulator(n_trials=5)
+        result = sim.run({"nature_rx": 0.8})
+        for k, v in result.items():
+            assert isinstance(v, float), f"{k} is not float"
+            assert not _math.isnan(v), f"{k} is NaN"
+            assert not _math.isinf(v), f"{k} is Inf"

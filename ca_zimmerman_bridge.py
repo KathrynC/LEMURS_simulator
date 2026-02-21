@@ -19,6 +19,7 @@ from constants import (
 from ca_simulator import run_single_cell, run_population_grid
 from ca_analytics import compute_ca_analytics
 from ca_schema import BIN_SCHEMA, _VAR_ORDER
+from ca_stochastic import run_single_cell_stochastic, compute_ensemble_analytics
 
 
 class LEMURSCASimulator:
@@ -209,6 +210,66 @@ def _flatten_population_summary(summary: dict) -> dict[str, float]:
     for var_name, counts in var_dists.items():
         for label, count in counts.items():
             flat[f"pop_{var_name}_{label}_frac"] = float(count) / total if total > 0 else 0.0
+
+    # Guard against NaN/Inf
+    for k, v in flat.items():
+        if math.isnan(v):
+            flat[k] = 0.0
+        elif math.isinf(v):
+            flat[k] = 999.0
+
+    return flat
+
+
+class LEMURSCAEnsembleSimulator:
+    """Zimmerman-protocol-compatible stochastic CA ensemble simulator.
+
+    Runs N stochastic CA trajectories and returns distributional metrics
+    (probabilities, fractions) instead of single deterministic values.
+    """
+
+    def __init__(self, n_trials: int = 50):
+        self.n_trials = n_trials
+
+    def param_spec(self) -> dict[str, tuple[float, float]]:
+        """Return the 12D parameter bounds (same as ODE simulator)."""
+        return {**INTERVENTION_BOUNDS, **PATIENT_BOUNDS}
+
+    def run(self, params: dict[str, float]) -> dict[str, float]:
+        """Run stochastic ensemble and return distributional metrics."""
+        intervention = dict(DEFAULT_INTERVENTION)
+        patient = dict(DEFAULT_PATIENT)
+
+        for k, v in params.items():
+            if k in INTERVENTION_BOUNDS:
+                intervention[k] = float(v)
+            elif k in PATIENT_BOUNDS:
+                patient[k] = float(v)
+
+        ensemble = run_single_cell_stochastic(
+            patient=patient, intervention=intervention,
+            n_trials=self.n_trials,
+        )
+        analytics = compute_ensemble_analytics(ensemble)
+        analytics["n_trials"] = ensemble["n_trials"]
+        flat = _flatten_ensemble_analytics(analytics)
+        return flat
+
+
+def _flatten_ensemble_analytics(analytics: dict) -> dict[str, float]:
+    """Convert ensemble analytics to a flat dict of floats."""
+    flat: dict[str, float] = {}
+
+    flat["ens_burnout_probability"] = analytics["burnout_probability"]
+    flat["ens_anxiety_crossing_prob"] = analytics["anxiety_crossing_probability"]
+    flat["ens_n_trials"] = float(analytics["n_trials"])
+
+    for att, prob in analytics["attractor_probabilities"].items():
+        flat[f"ens_attractor_{att}_prob"] = prob
+
+    for var_name, dist in analytics["variable_distributions"].items():
+        for label, frac in dist.items():
+            flat[f"ens_final_{var_name}_{label}_frac"] = frac
 
     # Guard against NaN/Inf
     for k, v in flat.items():

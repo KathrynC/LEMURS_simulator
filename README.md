@@ -4,6 +4,12 @@ A 14-state ODE simulator modeling the coupled sleep-stress-anxiety-nature dynami
 
 The simulator tracks how sleep disruption, academic stress, nature engagement, and circadian misalignment interact to shape psychological and physiological outcomes -- day by day, from move-in to finals.
 
+<p align="center">
+  <img src="docs/images/hero_architecture.png" alt="Architecture of Vulnerability — 14 state variables coupled through 6 empirically grounded tiers" width="720">
+</p>
+
+**Architecture of Vulnerability.** The 14 state variables of the LEMURS dynamical system arranged radially by coupling tier. Perceived Stress (PSS, center hub, orange) is the convergence point: sleep biomarkers (blue, top) feed in through Tier 1 (TST→PSS, β = -0.877/hr), nature engagement (green, bottom) feeds in through Tier 3 (β = -1.507/unit), and anxiety (purple, right) feeds out through Tier 2 Markov dynamics. Ribbon thickness is proportional to empirical coupling strength. The PSS self-loop represents the 2.2x within-person amplification discovered in Paper 3 — a student's deviation from their *own* sleep baseline predicts stress more than twice as strongly as between-person differences. Sparklines on the outer rim trace the vulnerable_female archetype's semester trajectory. Six coupling tiers from 9 peer-reviewed papers compose into a system where local rules (sleep debt, anxiety thresholds, attention depletion) generate global phenomena: bistability, burnout traps, and the spring break phase transition.
+
 ## What This Models
 
 A college semester is 105 days of coupled biopsychosocial dynamics. Sleep debt accumulates on weeknights. Stress ratchets up toward finals. Anxiety crosses and recrosses clinical thresholds. Directed attention drains under academic load and restores in green spaces. Spring break briefly removes all institutional forcing, revealing which students bounce back and which have accumulated too much damage.
@@ -122,6 +128,12 @@ print(f"HRV benefit: {analytics['intervention_response']['hrv_benefit']:.2f} ms"
 
 Eight representative student profiles are included in `constants.STUDENT_ARCHETYPES`:
 
+<p align="center">
+  <img src="docs/images/hero_diverging_fates.png" alt="Diverging Fates — Eight students enter the same semester with radically different outcomes" width="900">
+</p>
+
+**Diverging Fates.** Eight students enter the same 15-week semester on the same campus. Each panel traces five clinical variables — sleep, stress, anxiety, attention, and well-being — as severity-colored sparklines (green = healthy range, yellow = intermediate, red = clinically concerning). The gold vertical bands mark spring break, when institutional forcing vanishes for one week. The circular badge at each panel's lower right shows the student's final attractor state as classified by the semantic cellular automaton: **S** (Struggling, yellow) for students who accumulate moderate stress but avoid clinical thresholds, **X** (Stressed, orange) for students whose GAD-7 crosses the clinical threshold of 10. The top row tells the central story: resilient students (left) absorb the same institutional pressures that push vulnerable students (right) across clinical thresholds. The bottom row tests mechanisms — the Nature Seeker's attention stays intact (green) while the Digital Immersed student's attention flatlines (red), yet both end at "Struggling" because attention depletion alone doesn't cross the anxiety threshold. The Recovery Trajectory (bottom right) receives the full intervention package but still lands at "Stressed" — combined vulnerability (low emotional stability + MH history + trauma) can overwhelm even aggressive intervention.
+
 | Archetype | Description | Key dynamics |
 |-----------|-------------|--------------|
 | `resilient_male` | High stability, no MH, moderate chronotype | Absorbs semester stress without crossing clinical thresholds |
@@ -149,10 +161,12 @@ ca_schema.py              Semantic CA: 14-variable bin schema, discretize/exempl
 ca_rules.py               Semantic CA: 32 tiered rules (6 tiers + cross-tier compounds), JSON-serializable
 ca_simulator.py           Semantic CA: single-cell stepper + NxN population grid with social coupling
 ca_analytics.py           Semantic CA: rule firing stats, cascade detection, attractor ID, ODE fidelity
-ca_zimmerman_bridge.py    Semantic CA: LEMURSCASimulator + LEMURSPopulationSimulator (Zimmerman adapters)
+ca_stochastic.py          Semantic CA: stochastic rule engine (confidence-weighted firing), ensemble simulation
+ca_visualize.py           Semantic CA: trajectory heatmaps, rule timelines, fidelity plots, hero images
+ca_zimmerman_bridge.py    Semantic CA: LEMURSCASimulator + Population + Ensemble (Zimmerman adapters)
 ```
 
-**Dependency graph:** `constants <- simulator <- analytics <- lemurs_simulator`, `zimmerman_analysis <- zimmerman_bridge + zimmerman-toolkit`, `visualize <- simulator + constants`, `ca_schema <- ca_rules <- ca_simulator <- ca_analytics`, `ca_zimmerman_bridge <- ca_simulator + ca_analytics`.
+**Dependency graph:** `constants <- simulator <- analytics <- lemurs_simulator`, `zimmerman_analysis <- zimmerman_bridge + zimmerman-toolkit`, `visualize <- simulator + constants`, `ca_schema <- ca_rules <- ca_simulator <- ca_analytics`, `ca_stochastic <- ca_rules + ca_simulator + ca_analytics`, `ca_zimmerman_bridge <- ca_simulator + ca_analytics + ca_stochastic`.
 
 ### 4-Pillar Analytics
 
@@ -288,12 +302,36 @@ analytics = compute_ca_analytics(ca_result, ode_result=ode_result)
 | Fidelity stats | Per-variable bin agreement rate between CA and ODE trajectories |
 | Spring break | State before vs after break, variables that changed |
 
+### Stochastic Ensemble
+
+The stochastic CA engine runs Monte Carlo ensembles where each rule fires with probability equal to its confidence weight. A rule with confidence 0.85 fires in 85% of trials and is skipped in 15%, producing genuine distributional spread over hundreds of runs from identical initial conditions.
+
+```python
+from ca_stochastic import run_single_cell_stochastic, compute_ensemble_analytics
+
+ensemble = run_single_cell_stochastic(
+    patient={"emotional_stability": 3.0, "mh_diagnosis": 1},
+    n_trials=500, seed=42,
+)
+analytics = compute_ensemble_analytics(ensemble)
+print(f"Burnout probability: {analytics['burnout_probability']:.2%}")
+print(f"Anxiety crossing:    {analytics['anxiety_crossing_probability']:.2%}")
+print(f"Attractor dist:      {analytics['attractor_probabilities']}")
+```
+
+<p align="center">
+  <img src="docs/images/hero_probability_terrain.png" alt="Where Do 500 Semesters End? — Stochastic ridgeline distributions across three student archetypes" width="720">
+</p>
+
+**Where Do 500 Semesters End?** Each row shows the probability distribution of a clinical variable's final-state bin after 500 Monte Carlo stochastic CA trajectories. Three student archetypes are overlaid: Resilient Male (green), Vulnerable Female (red), and Recovery Trajectory with full intervention (blue). Background zones are colored by clinical severity — green for healthy bins, yellow for intermediate, red for concerning. The top row tells the starkest story: the Resilient Male's anxiety lands 100% in the sub-threshold bin (left peak), while the Vulnerable Female and Recovery Trajectory land 100% in the clinical bin (right peak). The dashed line marks the GAD-7 bistable threshold at 10 — once crossed, recovery probability decays each week with hysteresis. The Perceived Stress panel (row 2) shows the richest distributional structure: all three archetypes spread across the low/moderate/high bins, but the Recovery student (blue) is shifted left toward "low" — the intervention works, compressing the stress distribution. The Total Sleep Time panel (row 4) reveals that probabilistic rule firing creates genuine uncertainty in sleep outcomes: about 24% of trials for every archetype land in "adequate" rather than "excess," reflecting the stochastic nature of weekend sleep recovery competing with weekday debt accumulation. The bottom two rows show the intervention's clearest signature: without nature engagement (red, green peaks at "low"), nature's restorative pathway is closed; with it (blue peaks at "engaged" and "high"), both nature engagement and well-being shift dramatically.
+
 ### CA Zimmerman Bridges
 
-Both CA modes are Zimmerman-protocol compatible:
+All three CA modes are Zimmerman-protocol compatible:
 
 ```python
 from ca_zimmerman_bridge import LEMURSCASimulator, LEMURSPopulationSimulator
+from ca_zimmerman_bridge import LEMURSCAEnsembleSimulator
 
 # Single-cell CA (same 12D param_spec as ODE simulator)
 sim = LEMURSCASimulator()
@@ -303,6 +341,11 @@ result = sim.run({"nature_rx": 0.8})  # -> {"ca_final_attractor": 0.0, ...}
 pop = LEMURSPopulationSimulator()
 result = pop.run({"grid_size": 5, "social_coupling": 0.3})
 # -> {"pop_burnout_frac": 0.04, "pop_clinical_anxiety_frac": 0.12, ...}
+
+# Stochastic ensemble CA (12D, returns distributional metrics)
+ens = LEMURSCAEnsembleSimulator(n_trials=100)
+result = ens.run({"nature_rx": 0.8, "emotional_stability": 3.0})
+# -> {"ens_burnout_probability": 0.0, "ens_anxiety_crossing_prob": 1.0, ...}
 ```
 
 ## Simulation Details

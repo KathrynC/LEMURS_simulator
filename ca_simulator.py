@@ -206,7 +206,7 @@ def run_population_grid(
     patient_distribution: dict | None = None,
     intervention: dict | None = None,
     sim_days: int = N_STEPS,
-    social_coupling: float = 0.0,
+    social_coupling: float | dict = 0.0,
     seed: int = 42,
     rules: list[dict] | None = None,
 ) -> dict:
@@ -215,7 +215,7 @@ def run_population_grid(
     Each cell in the NxN grid represents a student. All students share
     institutional forcing (calendar, academic schedule). Optional social
     coupling allows neighboring students to influence each other's
-    NatureEngagement and Activity levels.
+    NatureEngagement, Activity, PSS, TST, and GAD7 levels.
 
     Parameters
     ----------
@@ -228,8 +228,11 @@ def run_population_grid(
         Shared intervention applied to all students.
     sim_days : int
         Number of daily steps.
-    social_coupling : float
+    social_coupling : float or dict
         Strength of neighbor influence [0, 1]. 0 = independent cells.
+        If a float, all 5 channels (nature, activity, stress, sleep,
+        anxiety) use the same strength. If a dict, keys are channel
+        names mapping to per-channel coupling strengths.
     seed : int
         Random seed for patient sampling.
     rules : list[dict] or None
@@ -244,11 +247,31 @@ def run_population_grid(
             "population_summary": dict,              # aggregate statistics
             "grid_size": int,
             "sim_days": int,
-            "social_coupling": float,
+            "social_coupling": dict,                 # per-channel coupling config
         }
     """
     intv = {**DEFAULT_INTERVENTION, **(intervention or {})}
     rng = np.random.default_rng(seed)
+
+    # Parse social coupling config
+    if isinstance(social_coupling, (int, float)):
+        coupling_config = {
+            "nature": float(social_coupling),
+            "activity": float(social_coupling),
+            "stress": float(social_coupling),
+            "sleep": float(social_coupling),
+            "anxiety": float(social_coupling),
+        }
+        coupling_scalar = float(social_coupling)
+    else:
+        coupling_config = {
+            "nature": float(social_coupling.get("nature", 0.0)),
+            "activity": float(social_coupling.get("activity", 0.0)),
+            "stress": float(social_coupling.get("stress", 0.0)),
+            "sleep": float(social_coupling.get("sleep", 0.0)),
+            "anxiety": float(social_coupling.get("anxiety", 0.0)),
+        }
+        coupling_scalar = max(coupling_config.values()) if coupling_config else 0.0
 
     # Initialize grid of students
     grid: list[list[dict]] = []  # grid[row][col] = discrete_state
@@ -295,8 +318,9 @@ def run_population_grid(
 
                 new_state, _ = step_cell(grid[r][c], ctx, rules)
 
-                # Social coupling: neighbor influence on Nature and Activity
-                if social_coupling > 0:
+                # Social coupling: neighbor influence on Nature, Activity,
+                # PSS (stress contagion), TST (sleep norms), GAD7 (anxiety diffusion)
+                if coupling_scalar > 0:
                     neighbors = []
                     for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
                         nr, nc = r + dr, c + dc
@@ -304,37 +328,99 @@ def run_population_grid(
                             neighbors.append(grid[nr][nc])
 
                     if neighbors:
-                        # Count engaged neighbors for nature
-                        nature_engaged = sum(
-                            1 for n in neighbors
-                            if n.get("NatureEngagement") == "engaged"
-                        )
-                        # If majority of neighbors are engaged and coupling
-                        # is strong enough, promote nature engagement
-                        if (nature_engaged / len(neighbors) > 0.5
-                                and rng.random() < social_coupling):
-                            nat_labels = BIN_SCHEMA["NatureEngagement"]["labels"]
-                            curr_idx = nat_labels.index(
-                                new_state.get("NatureEngagement", "low")
-                            )
-                            new_state["NatureEngagement"] = nat_labels[
-                                min(curr_idx + 1, len(nat_labels) - 1)
-                            ]
+                        n_neighbors = len(neighbors)
 
-                        # Count active neighbors
-                        active_count = sum(
-                            1 for n in neighbors
-                            if n.get("Activity") == "active"
-                        )
-                        if (active_count / len(neighbors) > 0.5
-                                and rng.random() < social_coupling):
-                            act_labels = BIN_SCHEMA["Activity"]["labels"]
-                            curr_idx = act_labels.index(
-                                new_state.get("Activity", "moderate")
+                        # --- Nature engagement channel ---
+                        if coupling_config["nature"] > 0:
+                            nature_engaged = sum(
+                                1 for n in neighbors
+                                if n.get("NatureEngagement") == "engaged"
                             )
-                            new_state["Activity"] = act_labels[
-                                min(curr_idx + 1, len(act_labels) - 1)
-                            ]
+                            if (nature_engaged / n_neighbors > 0.5
+                                    and rng.random() < coupling_config["nature"]):
+                                nat_labels = BIN_SCHEMA["NatureEngagement"]["labels"]
+                                curr_idx = nat_labels.index(
+                                    new_state.get("NatureEngagement", "low")
+                                )
+                                new_state["NatureEngagement"] = nat_labels[
+                                    min(curr_idx + 1, len(nat_labels) - 1)
+                                ]
+
+                        # --- Activity channel ---
+                        if coupling_config["activity"] > 0:
+                            active_count = sum(
+                                1 for n in neighbors
+                                if n.get("Activity") == "active"
+                            )
+                            if (active_count / n_neighbors > 0.5
+                                    and rng.random() < coupling_config["activity"]):
+                                act_labels = BIN_SCHEMA["Activity"]["labels"]
+                                curr_idx = act_labels.index(
+                                    new_state.get("Activity", "moderate")
+                                )
+                                new_state["Activity"] = act_labels[
+                                    min(curr_idx + 1, len(act_labels) - 1)
+                                ]
+
+                        # --- Stress contagion (PSS) ---
+                        # Asymmetric: high-stress majority pushes PSS +1;
+                        # low-stress majority helps reduce at half strength.
+                        if coupling_config["stress"] > 0:
+                            high_stress_count = sum(
+                                1 for n in neighbors
+                                if n.get("PSS") == "high"
+                            )
+                            low_stress_count = sum(
+                                1 for n in neighbors
+                                if n.get("PSS") == "low"
+                            )
+                            pss_labels = BIN_SCHEMA["PSS"]["labels"]
+                            curr_pss_idx = pss_labels.index(
+                                new_state.get("PSS", "low")
+                            )
+                            if (high_stress_count / n_neighbors > 0.5
+                                    and rng.random() < coupling_config["stress"]):
+                                new_state["PSS"] = pss_labels[
+                                    min(curr_pss_idx + 1, len(pss_labels) - 1)
+                                ]
+                            elif (low_stress_count / n_neighbors > 0.5
+                                    and rng.random() < coupling_config["stress"] * 0.5):
+                                new_state["PSS"] = pss_labels[
+                                    max(curr_pss_idx - 1, 0)
+                                ]
+
+                        # --- Sleep norm influence (TST) ---
+                        # Only on school days: if majority of neighbors are
+                        # deprived, push TST -1 (social norm toward less sleep).
+                        if coupling_config["sleep"] > 0 and is_school_day(day):
+                            deprived_count = sum(
+                                1 for n in neighbors
+                                if n.get("TST") == "deprived"
+                            )
+                            if (deprived_count / n_neighbors > 0.5
+                                    and rng.random() < coupling_config["sleep"]):
+                                tst_labels = BIN_SCHEMA["TST"]["labels"]
+                                curr_tst_idx = tst_labels.index(
+                                    new_state.get("TST", "adequate")
+                                )
+                                new_state["TST"] = tst_labels[
+                                    max(curr_tst_idx - 1, 0)
+                                ]
+
+                        # --- Anxiety diffusion (GAD7) ---
+                        # If >30% of neighbors are clinical AND student is
+                        # sub_threshold AND student's PSS is moderate or high,
+                        # flip to clinical.
+                        if coupling_config["anxiety"] > 0:
+                            clinical_count = sum(
+                                1 for n in neighbors
+                                if n.get("GAD7") == "clinical"
+                            )
+                            if (clinical_count / n_neighbors > 0.3
+                                    and new_state.get("GAD7") == "sub_threshold"
+                                    and new_state.get("PSS") in ("moderate", "high")
+                                    and rng.random() < coupling_config["anxiety"]):
+                                new_state["GAD7"] = "clinical"
 
                 new_row.append(new_state)
             new_grid.append(new_row)
@@ -358,7 +444,7 @@ def run_population_grid(
         "population_summary": summary,
         "grid_size": grid_size,
         "sim_days": sim_days,
-        "social_coupling": social_coupling,
+        "social_coupling": coupling_config,
     }
 
 

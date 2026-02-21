@@ -303,6 +303,62 @@ def _spring_break_diagnostic(trajectory: list[dict[str, str]]) -> dict:
     }
 
 
+def compute_population_analytics(pop_result: dict) -> dict:
+    """Compute population-level analytics including contagion metrics."""
+    grid_states = pop_result["grid_states"]
+    grid_size = pop_result["grid_size"]
+    final_grid = pop_result["final_grid"]
+
+    attractor_counts = {"healthy": 0, "struggling": 0, "stressed": 0, "burnout": 0}
+    for r in range(grid_size):
+        for c in range(grid_size):
+            att = _classify_attractor(final_grid[r][c])
+            attractor_counts[att] = attractor_counts.get(att, 0) + 1
+
+    total = grid_size * grid_size
+    largest_stressed_cluster = _largest_cluster(final_grid, grid_size, {"stressed", "burnout"})
+
+    return {
+        "attractor_distribution": attractor_counts,
+        "attractor_fractions": {k: v / total for k, v in attractor_counts.items()},
+        "largest_stressed_cluster": largest_stressed_cluster,
+        "total_students": total,
+    }
+
+
+def _largest_cluster(grid, grid_size, target_attractors):
+    """BFS to find largest connected component of target attractor states."""
+    visited = set()
+    max_size = 0
+
+    for r in range(grid_size):
+        for c in range(grid_size):
+            if (r, c) in visited:
+                continue
+            att = _classify_attractor(grid[r][c])
+            if att not in target_attractors:
+                visited.add((r, c))
+                continue
+
+            queue = [(r, c)]
+            visited.add((r, c))
+            cluster_size = 0
+            while queue:
+                cr, cc = queue.pop(0)
+                cluster_size += 1
+                for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                    nr, nc = cr + dr, cc + dc
+                    if (0 <= nr < grid_size and 0 <= nc < grid_size
+                            and (nr, nc) not in visited):
+                        visited.add((nr, nc))
+                        n_att = _classify_attractor(grid[nr][nc])
+                        if n_att in target_attractors:
+                            queue.append((nr, nc))
+            max_size = max(max_size, cluster_size)
+
+    return max_size
+
+
 def compute_ca_analytics(
     ca_result: dict,
     ode_result: dict | None = None,

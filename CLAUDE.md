@@ -30,7 +30,10 @@ python zimmerman_analysis.py --intervention-only       # 6D mode, default studen
 # Semantic CA
 python -c "from ca_simulator import run_single_cell; r = run_single_cell(); print(r['final_state'])"
 python -c "from ca_zimmerman_bridge import LEMURSCASimulator; s = LEMURSCASimulator(); print(s.run({}))"
-python -m pytest tests/test_ca.py -v  # CA test suite (77 tests)
+python -m pytest tests/test_ca.py -v  # CA test suite (96 tests)
+python ca_visualize.py                # generate all CA plots to output/ca/
+python -c "from ca_stochastic import run_single_cell_stochastic, compute_ensemble_analytics; r = run_single_cell_stochastic(n_trials=10); a = compute_ensemble_analytics(r); print(a['attractor_probabilities'])"
+python -c "from ca_zimmerman_bridge import LEMURSCAEnsembleSimulator; s = LEMURSCAEnsembleSimulator(n_trials=10); print(s.run({}))"
 ```
 
 ## Architecture
@@ -47,11 +50,13 @@ visualize.py              <- 4-panel trajectory plots, spring break highlighting
 ca_schema.py              <- Semantic CA: 14-variable bin schema, discretize/exemplar
 ca_rules.py               <- Semantic CA: 32 tiered rules (6 tiers + cross-tier compounds)
 ca_simulator.py           <- Semantic CA: single-cell stepper + NxN population grid
-ca_analytics.py           <- Semantic CA: rule stats, cascades, attractors, ODE fidelity
-ca_zimmerman_bridge.py    <- Semantic CA: LEMURSCASimulator + LEMURSPopulationSimulator
+ca_analytics.py           <- Semantic CA: rule stats, cascades, attractors, ODE fidelity, population contagion
+ca_visualize.py           <- Semantic CA: trajectory heatmap, rule timeline, population grid, fidelity plots
+ca_stochastic.py          <- Semantic CA: stochastic rule engine, ensemble simulation, distributional analytics
+ca_zimmerman_bridge.py    <- Semantic CA: LEMURSCASimulator + LEMURSPopulationSimulator + LEMURSCAEnsembleSimulator
 ```
 
-Dependency graph: `constants <- simulator <- analytics <- lemurs_simulator`, `zimmerman_analysis <- zimmerman_bridge + zimmerman-toolkit`, `visualize <- simulator + constants`, `ca_schema <- ca_rules <- ca_simulator <- ca_analytics`, `ca_zimmerman_bridge <- ca_simulator + ca_analytics`.
+Dependency graph: `constants <- simulator <- analytics <- lemurs_simulator`, `zimmerman_analysis <- zimmerman_bridge + zimmerman-toolkit`, `visualize <- simulator + constants`, `ca_schema <- ca_rules <- ca_simulator <- ca_analytics`, `ca_stochastic <- ca_rules + ca_simulator + ca_analytics`, `ca_zimmerman_bridge <- ca_simulator + ca_analytics + ca_stochastic`, `ca_visualize <- ca_simulator + ca_analytics + simulator`.
 
 ## State Variables (14D)
 
@@ -103,15 +108,18 @@ The CA layer discretizes the 14D continuous ODE state into clinically meaningful
 
 - **ca_schema.py**: BIN_SCHEMA maps 14 vars to 2-4 bins each (e.g., TST: deprived/adequate/excess at 6h, 8h). `discretize_state()` and `continuous_exemplar()` for round-tripping.
 - **ca_rules.py**: 32 rules in RULE_TABLE, organized by ODE coupling tier (1-6) + cross-tier compounds. Each rule: `(input_bins, context) -> (output_updates, confidence, citation)`. JSON-serializable. Conflict resolution: highest confidence wins.
-- **ca_simulator.py**: `run_single_cell()` for one student over 105 days. `run_population_grid()` for NxN grid with shared institutional forcing and optional social coupling. Uses `constants.is_weekday()`, `is_school_day()`, `week_of_semester()` for calendar.
-- **ca_analytics.py**: `compute_ca_analytics()` returns 5 sections: rule_stats, cascade_stats, attractor_stats (healthy/struggling/stressed/burnout), fidelity_stats (CA-vs-ODE bin agreement), spring_break diagnostic.
-- **ca_zimmerman_bridge.py**: `LEMURSCASimulator` (same 12D param_spec as ODE) and `LEMURSPopulationSimulator` (12D + grid_size + social_coupling). Both Zimmerman-protocol compatible.
+- **ca_simulator.py**: `run_single_cell()` for one student over 105 days. `run_population_grid()` for NxN grid with shared institutional forcing and 5-channel social coupling. Uses `constants.is_weekday()`, `is_school_day()`, `week_of_semester()` for calendar.
+- **ca_analytics.py**: `compute_ca_analytics()` returns 5 sections: rule_stats, cascade_stats, attractor_stats (healthy/struggling/stressed/burnout), fidelity_stats (CA-vs-ODE bin agreement), spring_break diagnostic. `compute_population_analytics()` adds contagion clustering metrics.
+- **ca_visualize.py**: `plot_ca_trajectory()` heatmap (14 vars × 105 days), `plot_rule_timeline()` (rule firings by tier), `plot_ca_fidelity()` (CA-vs-ODE agreement bars), `plot_population_grid()` (NxN attractor snapshots), plus 3 hero images: `plot_architecture_of_vulnerability()`, `plot_diverging_fates()`, `plot_probability_terrain()`. Output to `output/ca/`; hero images also copied to `docs/images/` for README.
+- **ca_stochastic.py**: `apply_rules_stochastic()` samples proportional to confidence instead of highest-wins. `run_single_cell_stochastic()` runs N Monte Carlo trajectories. `compute_ensemble_analytics()` returns burnout probability, anxiety crossing probability, attractor distributions.
+- **ca_zimmerman_bridge.py**: `LEMURSCASimulator` (same 12D param_spec as ODE), `LEMURSPopulationSimulator` (12D + grid_size + social_coupling), and `LEMURSCAEnsembleSimulator` (12D, returns distributional metrics from N stochastic trials). All Zimmerman-protocol compatible.
 
 Key CA dynamics:
-- **Burnout cascade** is an absorbing state -- when all 4 conditions met (deprived/high/depleted/clinical), state freezes
+- **Burnout cascade** is an absorbing state -- when all 4 conditions met (deprived/high/depleted/clinical), state freezes (deterministic even in stochastic mode)
 - **Spring break reset** removes institutional forcing, tests recovery
 - **Within-person amplification** via `tst_bin_dropped` context flag (Paper 3: 2.2x)
-- **Social coupling** in population mode: neighbor majority influence filtered through coupling probability
+- **5-channel social coupling** in population mode: nature engagement, activity, stress contagion (asymmetric -- spreads easier than it recedes), sleep norm influence (school days only), anxiety diffusion (amplifies GAD-7 development risk near clinical neighbors). Accepts float (all channels equal) or dict (per-channel strengths).
+- **Stochastic rules** -- every rule fires with probability equal to its confidence (0.85 confidence = 85% firing rate per step); ensemble of N trajectories produces burnout probability, anxiety crossing probability, and attractor confidence intervals
 
 ## Conventions
 
