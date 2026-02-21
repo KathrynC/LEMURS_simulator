@@ -167,7 +167,7 @@ The 8 archetypes were constructed entirely from quantitative findings reported i
 
 ### Data Provenance Statement
 
-I, Kathryn Cramer, am the creator of this simulation. I have **no access to non-public data** associated with the LEMURS (Lived Experiences Measured Using Rings Study) project conducted at the University of Vermont.
+I, Kathryn Cramer, am the creator of this simulation. I work closely with and collaborate with LEMURS investigators, but I have **no access to non-public data** associated with the LEMURS (Lived Experiences Measured Using Rings Study) project conducted at the University of Vermont.
 
 All model parameters, coupling coefficients, state variable ranges, and student archetype definitions in this simulator were derived exclusively from information available in the 9 published or preprint papers listed in the Source Papers section below. Specifically:
 
