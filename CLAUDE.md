@@ -13,7 +13,7 @@ Implements the Zimmerman protocol (`run()` + `param_spec()`), compatible with zi
 ```bash
 python simulator.py                    # standalone: 8 student archetypes
 python visualize.py                    # generate all plots to output/
-python -m pytest tests/ -v             # full test suite (229 tests)
+python -m pytest tests/ -v             # full test suite (316 tests)
 python -m pytest tests/test_simulator.py -v
 python -c "from lemurs_simulator import LEMURSSimulator; s = LEMURSSimulator(); print(s.run({}))"
 
@@ -42,10 +42,10 @@ python -c "from ca_zimmerman_bridge import LEMURSCAEnsembleSimulator; s = LEMURS
 constants.py              <- 14D state, 12D params, coupling constants, 8 archetypes, semester calendar
 simulator.py              <- initial_state(), derivatives() (6-tier coupling), RK4, simulate()
 analytics.py              <- 4-pillar compute_all(), NumpyEncoder
-lemurs_simulator.py       <- LEMURSSimulator (Zimmerman protocol adapter)
+lemurs_simulator.py       <- LEMURSSimulator (Zimmerman protocol adapter) with to_standard_output() for shared schema
 zimmerman_bridge.py       <- Dual-mode bridge (12D or 6D intervention-only)
 zimmerman_analysis.py     <- Full 14-tool Zimmerman analysis runner + CLI
-kcramer_bridge.py         <- 19 stress scenarios in 7 banks
+kcramer_bridge.py         <- 19 stress scenarios in 7 banks using proper cramer-toolkit Scenario/ScenarioSet objects (5 protocols, convenience functions: run_resilience_analysis, run_vulnerability_analysis, run_scenario_comparison)
 visualize.py              <- 4-panel trajectory plots, spring break highlighting
 ca_schema.py              <- Semantic CA: 14-variable bin schema, discretize/exemplar
 ca_rules.py               <- Semantic CA: 32 tiered rules (6 tiers + cross-tier compounds)
@@ -57,6 +57,18 @@ ca_zimmerman_bridge.py    <- Semantic CA: LEMURSCASimulator + LEMURSPopulationSi
 ```
 
 Dependency graph: `constants <- simulator <- analytics <- lemurs_simulator`, `zimmerman_analysis <- zimmerman_bridge + zimmerman-toolkit`, `visualize <- simulator + constants`, `ca_schema <- ca_rules <- ca_simulator <- ca_analytics`, `ca_stochastic <- ca_rules + ca_simulator + ca_analytics`, `ca_zimmerman_bridge <- ca_simulator + ca_analytics + ca_stochastic`, `ca_visualize <- ca_simulator + ca_analytics + simulator`.
+
+### Standard Output Schema
+
+LEMURSSimulator provides `to_standard_output()` for interoperability with zimmerman-toolkit and other analysis tools:
+
+```python
+from lemurs_simulator import LEMURSSimulator
+
+sim = LEMURSSimulator()
+output = sim.to_standard_output({"nature_rx": 0.8})
+# Returns: {"schema_version": "1.0", "simulator": {...}, "trajectory": {...}, "analytics": {...}, "parameters": {...}}
+```
 
 ## State Variables (14D)
 
