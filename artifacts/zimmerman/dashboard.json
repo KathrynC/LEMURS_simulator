@@ -1,0 +1,152 @@
+{
+  "simulator_info": {
+    "n_params": 12,
+    "param_names": [
+      "academic_load",
+      "age",
+      "baseline_chronotype",
+      "caffeine_reduction",
+      "emotional_stability",
+      "exercise_rx",
+      "gender",
+      "mh_diagnosis",
+      "nature_rx",
+      "sleep_hygiene",
+      "therapy_rx",
+      "trauma_load"
+    ],
+    "param_ranges": {
+      "academic_load": [
+        0.0,
+        1.0
+      ],
+      "age": [
+        18.0,
+        25.0
+      ],
+      "baseline_chronotype": [
+        2.0,
+        7.0
+      ],
+      "caffeine_reduction": [
+        0.0,
+        1.0
+      ],
+      "emotional_stability": [
+        1.0,
+        7.0
+      ],
+      "exercise_rx": [
+        0.0,
+        1.0
+      ],
+      "gender": [
+        0.0,
+        2.0
+      ],
+      "mh_diagnosis": [
+        0.0,
+        1.0
+      ],
+      "nature_rx": [
+        0.0,
+        1.0
+      ],
+      "sleep_hygiene": [
+        0.0,
+        1.0
+      ],
+      "therapy_rx": [
+        0.0,
+        1.0
+      ],
+      "trauma_load": [
+        0.0,
+        5.0
+      ]
+    }
+  },
+  "sections": {
+    "sensitivity": {
+      "available": true,
+      "top_params": [
+        "sleep_hygiene",
+        "nature_rx",
+        "therapy_rx",
+        "academic_load",
+        "exercise_rx",
+        "age",
+        "gender",
+        "emotional_stability",
+        "trauma_load",
+        "baseline_chronotype",
+        "mh_diagnosis",
+        "caffeine_reduction"
+      ],
+      "interaction_strength": 5.210886301895825
+    },
+    "robustness": {
+      "available": true,
+      "violation_rate": 0.0,
+      "mean_flip_size": null,
+      "most_fragile_params": null
+    },
+    "locality": {
+      "available": true,
+      "L50": {
+        "cut_frac": 0.8,
+        "target_position": 0.9,
+        "distractor_strength": 1.0
+      },
+      "effective_horizon": 0.8
+    },
+    "alignment": {
+      "available": true,
+      "overall_alignment": 0.727030883811827,
+      "worst_aligned_keys": [
+        "intervention_response_pss_benefit",
+        "sleep_quality_social_jetlag_mean",
+        "stress_anxiety_gad7_mean",
+        "stress_anxiety_depression_mean",
+        "stress_anxiety_pss_mean",
+        "physiological_hrv_mean",
+        "sleep_quality_tst_mean"
+      ]
+    },
+    "representation": {
+      "available": true,
+      "diegeticization_gain": null,
+      "roundtrip_error": null,
+      "fragmentation_correlation": 0.10087156800595104
+    },
+    "structure": {
+      "available": true,
+      "most_causal_params": [
+        "most_causal_params",
+        "most_connected_outputs"
+      ],
+      "variance_explained": null
+    }
+  },
+  "recommendations": [
+    "Most influential parameters: sleep_hygiene, nature_rx, therapy_rx. Focus LLM prompts on these for maximum impact.",
+    "Interaction strength is 5.211 -- parameters interact non-additively. Consider joint parameter prompts rather than independent per-parameter generation.",
+    "Worst-aligned output keys: intervention_response_pss_benefit, sleep_quality_social_jetlag_mean, stress_anxiety_gad7_mean. These diverge most from intended outcomes.",
+    "Most causal parameters: most_causal_params, most_connected_outputs."
+  ],
+  "tools_used": [
+    "sobol",
+    "receptive_field",
+    "falsifier",
+    "contrast_sets",
+    "contrastive",
+    "locality",
+    "posiwid",
+    "benchmark",
+    "diegeticizer",
+    "token_extispicy",
+    "relation_graph",
+    "pds"
+  ],
+  "tools_missing": []
+}

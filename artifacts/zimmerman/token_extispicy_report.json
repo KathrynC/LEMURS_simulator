@@ -1,0 +1,244 @@
+{
+  "fragmentation_stats": {
+    "mean_tokens_per_param": 3.0,
+    "mean_tokens_per_digit": 0.7185487784930684,
+    "std_tokens_per_param": 0.0,
+    "max_fragmentation_param": "academic_load"
+  },
+  "perturbation_sensitivity": {
+    "academic_load": 1,
+    "age": 1,
+    "baseline_chronotype": 1,
+    "caffeine_reduction": 1,
+    "emotional_stability": 1,
+    "exercise_rx": 1,
+    "gender": 1,
+    "mh_diagnosis": 1,
+    "nature_rx": 1,
+    "sleep_hygiene": 1,
+    "therapy_rx": 1,
+    "trauma_load": 1
+  },
+  "fragmentation_output_correlation": {
+    "sleep_quality_tst_mean": 0.09032927634533085,
+    "sleep_quality_tst_final": 0.09042861318416312,
+    "sleep_quality_tst_min": 0.09204781710312045,
+    "sleep_quality_sleep_quality_mean": 0.09029549181532402,
+    "sleep_quality_sleep_quality_final": 0.09034270821896781,
+    "sleep_quality_sleep_debt_cumulative": -0.09032927634532943,
+    "sleep_quality_social_jetlag_mean": -0.05046510681449184,
+    "sleep_quality_shape_cluster1_fraction": -0.1469191721686774,
+    "stress_anxiety_pss_mean": -0.09232737501588577,
+    "stress_anxiety_pss_final": -0.07813413412561851,
+    "stress_anxiety_pss_slope": -0.07775465773014346,
+    "stress_anxiety_pss_peak": -0.10159202651055535,
+    "stress_anxiety_pss_time_above_threshold": 0.0,
+    "stress_anxiety_gad7_mean": -0.2247694026352096,
+    "stress_anxiety_gad7_peak": -0.3678743653425337,
+    "stress_anxiety_gad7_days_above_10": -0.0766158024107528,
+    "stress_anxiety_anxiety_transitions_count": -0.08673725074612333,
+    "stress_anxiety_depression_mean": -0.15028251813995133,
+    "stress_anxiety_depression_final": -0.15429332466274392,
+    "physiological_rhr_mean": -0.14822007294228876,
+    "physiological_rhr_slope": 0.1482200729422498,
+    "physiological_hrv_mean": 0.15234462589131248,
+    "physiological_hrv_final": 0.15174875524744968,
+    "physiological_hrv_slope": -0.00450021143227188,
+    "physiological_arr_mean": 0.1180645096803424,
+    "physiological_arr_slope": 0.11806450968020867,
+    "physiological_dac_min": 0.011150860208562322,
+    "intervention_response_pss_benefit": 0.057033842565433535,
+    "intervention_response_hrv_benefit": 0.03970239135485544,
+    "intervention_response_wellbeing_gain": -0.01848871751196315,
+    "intervention_response_nature_dose_response": 0.051779444853138894,
+    "intervention_response_cost_effectiveness": 0.05703384256543361
+  },
+  "hazard_zones": [
+    {
+      "params": {
+        "nature_rx": 0.9975800372629172,
+        "exercise_rx": 0.7008810101206585,
+        "therapy_rx": 0.5952128404133717,
+        "sleep_hygiene": 0.392369092921794,
+        "caffeine_reduction": 0.9152987602855548,
+        "academic_load": 0.49691659613034944,
+        "age": 18.94056839319143,
+        "gender": 0.730756926398267,
+        "emotional_stability": 1.4030000130866014,
+        "trauma_load": 1.0098951884439078,
+        "mh_diagnosis": 0.017668780999912204,
+        "baseline_chronotype": 4.266399582500817
+      },
+      "fragmentation": 0.19543973941368079,
+      "output_degradation": 0.3105695536840195
+    },
+    {
+      "params": {
+        "nature_rx": 0.8253995111963212,
+        "exercise_rx": 0.29535902534408986,
+        "therapy_rx": 0.4585480817985511,
+        "sleep_hygiene": 0.4423141270678932,
+        "caffeine_reduction": 0.3019273914424916,
+        "academic_load": 0.9184418955155542,
+        "age": 23.469058248020612,
+        "gender": 0.221176821992221,
+        "emotional_stability": 6.982207947025438,
+        "trauma_load": 4.3960001215387265,
+        "mh_diagnosis": 0.28390843786403896,
+        "baseline_chronotype": 6.184482898304691
+      },
+      "fragmentation": 0.19480519480519481,
+      "output_degradation": 0.4060049960060794
+    },
+    {
+      "params": {
+        "nature_rx": 0.581061139700395,
+        "exercise_rx": 0.34686980453483707,
+        "therapy_rx": 0.5909154914814168,
+        "sleep_hygiene": 0.022803871029697498,
+        "caffeine_reduction": 0.9585592132414453,
+        "academic_load": 0.48230343694290023,
+        "age": 23.479146590752002,
+        "gender": 0.16545999984487714,
+        "emotional_stability": 3.9199499850289623,
+        "trauma_load": 2.4535349717726045,
+        "mh_diagnosis": 0.9378264549749828,
+        "baseline_chronotype": 4.858640261880377
+      },
+      "fragmentation": 0.1941747572815534,
+      "output_degradation": 0.12145564872263205
+    },
+    {
+      "params": {
+        "nature_rx": 0.4087831094286971,
+        "exercise_rx": 0.21762852669696198,
+        "therapy_rx": 0.5883062484090082,
+        "sleep_hygiene": 0.3170409113172379,
+        "caffeine_reduction": 0.0360598342773637,
+        "academic_load": 0.4184000441568604,
+        "age": 21.318928725631192,
+        "gender": 0.45118573640842197,
+        "emotional_stability": 4.434747598732694,
+        "trauma_load": 2.8288595021596046,
+        "mh_diagnosis": 0.7020021811103714,
+        "baseline_chronotype": 5.23974241100605
+      },
+      "fragmentation": 0.1941747572815534,
+      "output_degradation": 0.17673122668910177
+    },
+    {
+      "params": {
+        "nature_rx": 0.1116003682492267,
+        "exercise_rx": 0.3845043779899281,
+        "therapy_rx": 0.06052845082653613,
+        "sleep_hygiene": 0.6981897256099134,
+        "caffeine_reduction": 0.20702054152481197,
+        "academic_load": 0.3020715687836385,
+        "age": 20.75888044024668,
+        "gender": 0.8332192661382958,
+        "emotional_stability": 1.0099642460488032,
+        "trauma_load": 0.5603518549934877,
+        "mh_diagnosis": 0.8627645637408781,
+        "baseline_chronotype": 2.0061653125595407
+      },
+      "fragmentation": 0.1941747572815534,
+      "output_degradation": 0.21291459285866232
+    },
+    {
+      "params": {
+        "nature_rx": 0.8803803001276922,
+        "exercise_rx": 0.5362004131113752,
+        "therapy_rx": 0.6217920298607565,
+        "sleep_hygiene": 0.27318719150087634,
+        "caffeine_reduction": 0.05051969637200515,
+        "academic_load": 0.5945676088908644,
+        "age": 20.06328635241934,
+        "gender": 1.3272420933207039,
+        "emotional_stability": 6.017471061055607,
+        "trauma_load": 0.09080271957182029,
+        "mh_diagnosis": 0.5957137746857274,
+        "baseline_chronotype": 3.1564026984342615
+      },
+      "fragmentation": 0.1941747572815534,
+      "output_degradation": 0.22507272332967196
+    },
+    {
+      "params": {
+        "nature_rx": 0.39462988815008226,
+        "exercise_rx": 0.31913248859966603,
+        "therapy_rx": 0.6087411288982467,
+        "sleep_hygiene": 0.5809893737480507,
+        "caffeine_reduction": 0.40913997762479715,
+        "academic_load": 0.6017747558677085,
+        "age": 24.547669586965462,
+        "gender": 0.935280513253193,
+        "emotional_stability": 2.180453084503788,
+        "trauma_load": 1.8860299144150194,
+        "mh_diagnosis": 0.3941069825931186,
+        "baseline_chronotype": 2.655543465131099
+      },
+      "fragmentation": 0.1941747572815534,
+      "output_degradation": 0.09631267912621111
+    },
+    {
+      "params": {
+        "nature_rx": 0.6684029617904717,
+        "exercise_rx": 0.4710962061431325,
+        "therapy_rx": 0.5652361064811888,
+        "sleep_hygiene": 0.7649988574160256,
+        "caffeine_reduction": 0.6347183200005908,
+        "academic_load": 0.5535794006579958,
+        "age": 21.914450125217893,
+        "gender": 0.6079001961252244,
+        "emotional_stability": 1.1849070074076364,
+        "trauma_load": 2.183586946161812,
+        "mh_diagnosis": 0.2145846728195292,
+        "baseline_chronotype": 4.042643218623181
+      },
+      "fragmentation": 0.1935483870967742,
+      "output_degradation": 0.1771460037615761
+    },
+    {
+      "params": {
+        "nature_rx": 0.6339751116810851,
+        "exercise_rx": 0.1058974037507533,
+        "therapy_rx": 0.14033959706391264,
+        "sleep_hygiene": 0.41911431931630383,
+        "caffeine_reduction": 0.9662319121431817,
+        "academic_load": 0.5960425532343728,
+        "age": 24.53116255120148,
+        "gender": 1.6087218312259415,
+        "emotional_stability": 3.8042896093317493,
+        "trauma_load": 3.923817246260937,
+        "mh_diagnosis": 0.017836783976987736,
+        "baseline_chronotype": 2.5457199838286746
+      },
+      "fragmentation": 0.1935483870967742,
+      "output_degradation": 0.14158511975964597
+    },
+    {
+      "params": {
+        "nature_rx": 0.8294286148827363,
+        "exercise_rx": 0.7968170883251617,
+        "therapy_rx": 0.2326407419664337,
+        "sleep_hygiene": 0.5307695905990535,
+        "caffeine_reduction": 0.6060158207000109,
+        "academic_load": 0.8677389537760112,
+        "age": 22.22175010137108,
+        "gender": 0.8251431385473607,
+        "emotional_stability": 3.245104260443096,
+        "trauma_load": 2.1294104318675493,
+        "mh_diagnosis": 0.6519310255799742,
+        "baseline_chronotype": 6.337453158761624
+      },
+      "fragmentation": 0.1935483870967742,
+      "output_degradation": 0.42272592506964446
+    }
+  ],
+  "token_edit_vs_string_edit": {
+    "mean_ratio": 0.5881162412137104,
+    "max_ratio": 1.2490610328638496
+  },
+  "n_samples": 100,
+  "n_sims": 100
+}

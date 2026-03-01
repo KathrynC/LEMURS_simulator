@@ -1,0 +1,12 @@
+{
+  "violations": [],
+  "summary": {
+    "total_tests": 200,
+    "violations_found": 0,
+    "violation_rate": 0.0,
+    "random_violations": 0,
+    "boundary_violations": 0,
+    "adversarial_violations": 0,
+    "exceptions": 0
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "tasks": [
+    {
+      "task_id": "palindrome_000",
+      "category": "palindrome",
+      "supradiegetic_score": 1.0,
+      "diegetic_score": 0.9279975375099161,
+      "gain": -0.07200246249008391,
+      "supradiegetic_std": 0.0,
+      "diegetic_std": 0.0
+    },
+    {
+      "task_id": "table_001",
+      "category": "table",
+      "supradiegetic_score": 1.0,
+      "diegetic_score": 0.9697363991788654,
+      "gain": -0.03026360082113455,
+      "supradiegetic_std": 0.0,
+      "diegetic_std": 1.1102230246251565e-16
+    },
+    {
+      "task_id": "digits_002",
+      "category": "digits",
+      "supradiegetic_score": 1.0,
+      "diegetic_score": 0.9729192663532118,
+      "gain": -0.027080733646788202,
+      "supradiegetic_std": 0.0,
+      "diegetic_std": 0.0
+    },
+    {
+      "task_id": "format_003",
+      "category": "format",
+      "supradiegetic_score": 1.0,
+      "diegetic_score": 0.960524881879337,
+      "gain": -0.039475118120662955,
+      "supradiegetic_std": 0.0,
+      "diegetic_std": 0.0
+    },
+    {
+      "task_id": "symbol_004",
+      "category": "symbol",
+      "supradiegetic_score": 1.0,
+      "diegetic_score": 0.9711074893426279,
+      "gain": -0.028892510657372084,
+      "supradiegetic_std": 0.0,
+      "diegetic_std": 1.1102230246251565e-16
+    }
+  ],
+  "summary": {
+    "mean_supradiegetic_score": 1.0,
+    "mean_diegetic_score": 0.9604571148527917,
+    "mean_gain": -0.03954288514720827,
+    "by_category": {
+      "palindrome": {
+        "sup_score": 1.0,
+        "die_score": 0.9279975375099161,
+        "gain": -0.07200246249008391
+      },
+      "table": {
+        "sup_score": 1.0,
+        "die_score": 0.9697363991788654,
+        "gain": -0.03026360082113455
+      },
+      "digits": {
+        "sup_score": 1.0,
+        "die_score": 0.9729192663532118,
+        "gain": -0.027080733646788202
+      },
+      "format": {
+        "sup_score": 1.0,
+        "die_score": 0.960524881879337,
+        "gain": -0.039475118120662955
+      },
+      "symbol": {
+        "sup_score": 1.0,
+        "die_score": 0.9711074893426279,
+        "gain": -0.028892510657372084
+      }
+    }
+  },
+  "failure_mode_tags": [],
+  "n_sims": 50
+}

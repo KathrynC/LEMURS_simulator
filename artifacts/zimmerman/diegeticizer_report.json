@@ -1,0 +1,211 @@
+{
+  "narrative": {
+    "narrative": {
+      "nature_prescription": "very low",
+      "exercise_prescription": "low",
+      "counseling_engagement": "very low",
+      "sleep_routine_quality": "low",
+      "stimulant_reduction": "very low",
+      "course_pressure": "medium",
+      "student_age": "very low",
+      "gender_identity": "medium",
+      "emotional_resilience": "medium",
+      "adverse_experience_history": "low",
+      "prior_mental_health_diagnosis": "very low",
+      "natural_sleep_timing": "medium"
+    },
+    "numeric": {
+      "nature_rx": 0.0,
+      "exercise_rx": 0.2,
+      "therapy_rx": 0.0,
+      "sleep_hygiene": 0.3,
+      "caffeine_reduction": 0.0,
+      "academic_load": 0.5,
+      "age": 19.0,
+      "gender": 1.0,
+      "emotional_stability": 4.5,
+      "trauma_load": 1.0,
+      "mh_diagnosis": 0.0,
+      "baseline_chronotype": 4.5
+    },
+    "bins_used": {
+      "nature_rx": {
+        "label": "very low",
+        "range": [
+          0.0,
+          0.2
+        ]
+      },
+      "exercise_rx": {
+        "label": "low",
+        "range": [
+          0.2,
+          0.4
+        ]
+      },
+      "therapy_rx": {
+        "label": "very low",
+        "range": [
+          0.0,
+          0.2
+        ]
+      },
+      "sleep_hygiene": {
+        "label": "low",
+        "range": [
+          0.2,
+          0.4
+        ]
+      },
+      "caffeine_reduction": {
+        "label": "very low",
+        "range": [
+          0.0,
+          0.2
+        ]
+      },
+      "academic_load": {
+        "label": "medium",
+        "range": [
+          0.4,
+          0.6000000000000001
+        ]
+      },
+      "age": {
+        "label": "very low",
+        "range": [
+          18.0,
+          19.4
+        ]
+      },
+      "gender": {
+        "label": "medium",
+        "range": [
+          0.8,
+          1.2000000000000002
+        ]
+      },
+      "emotional_stability": {
+        "label": "medium",
+        "range": [
+          3.4,
+          4.6
+        ]
+      },
+      "trauma_load": {
+        "label": "low",
+        "range": [
+          1.0,
+          2.0
+        ]
+      },
+      "mh_diagnosis": {
+        "label": "very low",
+        "range": [
+          0.0,
+          0.2
+        ]
+      },
+      "baseline_chronotype": {
+        "label": "medium",
+        "range": [
+          4.0,
+          5.0
+        ]
+      }
+    }
+  },
+  "recovered": {
+    "params": {
+      "nature_rx": 0.1,
+      "exercise_rx": 0.30000000000000004,
+      "therapy_rx": 0.1,
+      "sleep_hygiene": 0.30000000000000004,
+      "caffeine_reduction": 0.1,
+      "academic_load": 0.5,
+      "age": 18.7,
+      "gender": 1.0,
+      "emotional_stability": 4.0,
+      "trauma_load": 1.5,
+      "mh_diagnosis": 0.1,
+      "baseline_chronotype": 4.5
+    },
+    "narrative": {
+      "nature_prescription": "very low",
+      "exercise_prescription": "low",
+      "counseling_engagement": "very low",
+      "sleep_routine_quality": "low",
+      "stimulant_reduction": "very low",
+      "course_pressure": "medium",
+      "student_age": "very low",
+      "gender_identity": "medium",
+      "emotional_resilience": "medium",
+      "adverse_experience_history": "low",
+      "prior_mental_health_diagnosis": "very low",
+      "natural_sleep_timing": "medium"
+    },
+    "mode": "deterministic",
+    "recovery_uncertainty": {
+      "nature_rx": 0.2,
+      "exercise_rx": 0.2,
+      "therapy_rx": 0.2,
+      "sleep_hygiene": 0.2,
+      "caffeine_reduction": 0.2,
+      "academic_load": 0.2,
+      "age": 1.4,
+      "gender": 0.4,
+      "emotional_stability": 1.2,
+      "trauma_load": 1.0,
+      "mh_diagnosis": 0.2,
+      "baseline_chronotype": 1.0
+    }
+  },
+  "roundtrip": {
+    "sleep_quality_tst_mean": 6.95033777572741,
+    "sleep_quality_tst_final": 6.851762886119825,
+    "sleep_quality_tst_min": 6.834384735755478,
+    "sleep_quality_sleep_quality_mean": 72.99909144433445,
+    "sleep_quality_sleep_quality_final": 71.25042065225199,
+    "sleep_quality_sleep_debt_cumulative": 15.894885110413501,
+    "sleep_quality_social_jetlag_mean": 0.4557447751673485,
+    "sleep_quality_shape_cluster1_fraction": 0.6519970008218934,
+    "stress_anxiety_pss_mean": 16.8887446501429,
+    "stress_anxiety_pss_final": 16.953142862671957,
+    "stress_anxiety_pss_slope": 0.008073836918778136,
+    "stress_anxiety_pss_peak": 16.953142862671957,
+    "stress_anxiety_pss_time_above_threshold": 1.0,
+    "stress_anxiety_gad7_mean": 8.966389681344202,
+    "stress_anxiety_gad7_peak": 9.993462442127877,
+    "stress_anxiety_gad7_days_above_10": 0.0,
+    "stress_anxiety_anxiety_transitions_count": 0.0,
+    "stress_anxiety_depression_mean": 8.523207848088104,
+    "stress_anxiety_depression_final": 8.489322917202133,
+    "physiological_rhr_mean": 63.189660061092916,
+    "physiological_rhr_slope": -0.0013544506187686638,
+    "physiological_hrv_mean": 64.68732768416494,
+    "physiological_hrv_final": 64.77132669039995,
+    "physiological_hrv_slope": 0.011411341281091714,
+    "physiological_arr_mean": 15.598741526641541,
+    "physiological_arr_slope": -0.00016602345935106286,
+    "physiological_dac_min": 0.6817703169026039,
+    "intervention_response_pss_benefit": 0.04155720829345455,
+    "intervention_response_hrv_benefit": 0.06800258472685528,
+    "intervention_response_wellbeing_gain": 0.014418501963341157,
+    "intervention_response_nature_dose_response": 0.02493432497607273,
+    "intervention_response_cost_effectiveness": 0.11433729265924004
+  },
+  "lexicon": {
+    "nature_rx": "nature_prescription",
+    "exercise_rx": "exercise_prescription",
+    "therapy_rx": "counseling_engagement",
+    "sleep_hygiene": "sleep_routine_quality",
+    "caffeine_reduction": "stimulant_reduction",
+    "academic_load": "course_pressure",
+    "age": "student_age",
+    "gender": "gender_identity",
+    "emotional_stability": "emotional_resilience",
+    "trauma_load": "adverse_experience_history",
+    "mh_diagnosis": "prior_mental_health_diagnosis",
+    "baseline_chronotype": "natural_sleep_timing"
+  }
+}

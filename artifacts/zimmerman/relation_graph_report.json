@@ -1,0 +1,4779 @@
+{
+  "nodes": {
+    "params": {
+      "nature_rx": 0.0,
+      "exercise_rx": 0.2,
+      "therapy_rx": 0.0,
+      "sleep_hygiene": 0.3,
+      "caffeine_reduction": 0.0,
+      "academic_load": 0.5,
+      "age": 19.0,
+      "gender": 1.0,
+      "emotional_stability": 4.5,
+      "trauma_load": 1.0,
+      "mh_diagnosis": 0.0,
+      "baseline_chronotype": 4.5
+    },
+    "outputs": {
+      "intervention_response_cost_effectiveness": 0.0,
+      "intervention_response_hrv_benefit": 0.0,
+      "intervention_response_nature_dose_response": 0.0,
+      "intervention_response_pss_benefit": 0.0,
+      "intervention_response_wellbeing_gain": 0.0,
+      "physiological_arr_mean": 15.599999999999994,
+      "physiological_arr_slope": -8.02997618680033e-16,
+      "physiological_dac_min": 0.5106766205081219,
+      "physiological_hrv_final": 64.99691936746123,
+      "physiological_hrv_mean": 64.99884314406464,
+      "physiological_hrv_slope": -0.00021829448754551753,
+      "physiological_rhr_mean": 63.0,
+      "physiological_rhr_slope": -3.3320215936939127e-15,
+      "sleep_quality_shape_cluster1_fraction": 0.6399999999999999,
+      "sleep_quality_sleep_debt_cumulative": 16.011952844186048,
+      "sleep_quality_sleep_quality_final": 71.19218791845152,
+      "sleep_quality_sleep_quality_mean": 72.97596748449331,
+      "sleep_quality_social_jetlag_mean": 0.45424014673130547,
+      "sleep_quality_tst_final": 6.838546259449072,
+      "sleep_quality_tst_mean": 6.9426068876480915,
+      "sleep_quality_tst_min": 6.821313213588944,
+      "stress_anxiety_anxiety_transitions_count": 0.0,
+      "stress_anxiety_depression_final": 8.379144091312424,
+      "stress_anxiety_depression_mean": 8.385374072392928,
+      "stress_anxiety_gad7_days_above_10": 0.0,
+      "stress_anxiety_gad7_mean": 8.740753970595321,
+      "stress_anxiety_gad7_peak": 9.814192402823057,
+      "stress_anxiety_pss_final": 17.047390633997775,
+      "stress_anxiety_pss_mean": 16.916998346087233,
+      "stress_anxiety_pss_peak": 17.047390633997775,
+      "stress_anxiety_pss_slope": 0.014633999900754077,
+      "stress_anxiety_pss_time_above_threshold": 1.0
+    }
+  },
+  "edges": {
+    "causal": [
+      {
+        "from": "nature_rx",
+        "to": "intervention_response_cost_effectiveness",
+        "weight": 0.1093365491838705,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "intervention_response_hrv_benefit",
+        "weight": 0.674908882719194,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "intervention_response_nature_dose_response",
+        "weight": 0.0023843778225867145,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "intervention_response_pss_benefit",
+        "weight": 0.039739630376445234,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "intervention_response_wellbeing_gain",
+        "weight": 0.0970690338959912,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "physiological_arr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "physiological_arr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "physiological_dac_min",
+        "weight": 0.17944231971394053,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "physiological_hrv_final",
+        "weight": 1.326799789269728,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "physiological_hrv_mean",
+        "weight": 0.674908882719194,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "physiological_hrv_slope",
+        "weight": 0.08844287886619537,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "physiological_rhr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "physiological_rhr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "sleep_quality_shape_cluster1_fraction",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "sleep_quality_sleep_debt_cumulative",
+        "weight": 0.0003778900246942385,
+        "sign": -1
+      },
+      {
+        "from": "nature_rx",
+        "to": "sleep_quality_sleep_quality_final",
+        "weight": 0.00021501611939811482,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "sleep_quality_sleep_quality_mean",
+        "weight": 4.7512064327293047e-05,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "sleep_quality_social_jetlag_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "sleep_quality_tst_final",
+        "weight": 9.015408899415434e-05,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "sleep_quality_tst_mean",
+        "weight": 2.495500162069675e-05,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "sleep_quality_tst_min",
+        "weight": 8.595675105027567e-05,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "stress_anxiety_anxiety_transitions_count",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "stress_anxiety_depression_final",
+        "weight": 0.0005810173419718012,
+        "sign": -1
+      },
+      {
+        "from": "nature_rx",
+        "to": "stress_anxiety_depression_mean",
+        "weight": 0.00015542758866615713,
+        "sign": -1
+      },
+      {
+        "from": "nature_rx",
+        "to": "stress_anxiety_gad7_days_above_10",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "stress_anxiety_gad7_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "stress_anxiety_gad7_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "nature_rx",
+        "to": "stress_anxiety_pss_final",
+        "weight": 0.10837117101409888,
+        "sign": -1
+      },
+      {
+        "from": "nature_rx",
+        "to": "stress_anxiety_pss_mean",
+        "weight": 0.039739630376445234,
+        "sign": -1
+      },
+      {
+        "from": "nature_rx",
+        "to": "stress_anxiety_pss_peak",
+        "weight": 0.10837117101409888,
+        "sign": -1
+      },
+      {
+        "from": "nature_rx",
+        "to": "stress_anxiety_pss_slope",
+        "weight": 0.007592946593577149,
+        "sign": -1
+      },
+      {
+        "from": "nature_rx",
+        "to": "stress_anxiety_pss_time_above_threshold",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "intervention_response_cost_effectiveness",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "intervention_response_hrv_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "intervention_response_nature_dose_response",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "intervention_response_pss_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "intervention_response_wellbeing_gain",
+        "weight": 0.04664323351235562,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "physiological_arr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "physiological_arr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "physiological_dac_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "physiological_hrv_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "physiological_hrv_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "physiological_hrv_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "physiological_rhr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "physiological_rhr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "sleep_quality_shape_cluster1_fraction",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "sleep_quality_sleep_debt_cumulative",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "sleep_quality_sleep_quality_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "sleep_quality_sleep_quality_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "sleep_quality_social_jetlag_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "sleep_quality_tst_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "sleep_quality_tst_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "sleep_quality_tst_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "stress_anxiety_anxiety_transitions_count",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "stress_anxiety_depression_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "stress_anxiety_depression_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "stress_anxiety_gad7_days_above_10",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "stress_anxiety_gad7_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "stress_anxiety_gad7_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "stress_anxiety_pss_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "stress_anxiety_pss_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "stress_anxiety_pss_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "stress_anxiety_pss_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "exercise_rx",
+        "to": "stress_anxiety_pss_time_above_threshold",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "intervention_response_cost_effectiveness",
+        "weight": 0.0898927662083898,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "intervention_response_hrv_benefit",
+        "weight": 4.263690271955056e-05,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "intervention_response_nature_dose_response",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "intervention_response_pss_benefit",
+        "weight": 0.03267256310266475,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "intervention_response_wellbeing_gain",
+        "weight": 4.0382533228466855e-05,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "physiological_arr_mean",
+        "weight": 0.01258473358429768,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "physiological_arr_slope",
+        "weight": 0.001660234593479407,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "physiological_dac_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "physiological_hrv_final",
+        "weight": 0.00020550063482005498,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "physiological_hrv_mean",
+        "weight": 4.263690271955056e-05,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "physiological_hrv_slope",
+        "weight": 1.1792981158929437e-05,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "physiological_rhr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "physiological_rhr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "sleep_quality_shape_cluster1_fraction",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "sleep_quality_sleep_debt_cumulative",
+        "weight": 0.000299522092461757,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "sleep_quality_sleep_quality_final",
+        "weight": 0.00017131165890305056,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "sleep_quality_sleep_quality_mean",
+        "weight": 3.668309318527463e-05,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "sleep_quality_social_jetlag_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "sleep_quality_tst_final",
+        "weight": 7.482811783532384e-05,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "sleep_quality_tst_mean",
+        "weight": 1.9779760762617116e-05,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "sleep_quality_tst_min",
+        "weight": 7.103081536286027e-05,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "stress_anxiety_anxiety_transitions_count",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "stress_anxiety_depression_final",
+        "weight": 0.0004790294459766642,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "stress_anxiety_depression_mean",
+        "weight": 0.000122768018506747,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "stress_anxiety_gad7_days_above_10",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "stress_anxiety_gad7_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "stress_anxiety_gad7_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "stress_anxiety_pss_final",
+        "weight": 0.09581693677169767,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "stress_anxiety_pss_mean",
+        "weight": 0.03267256310266475,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "stress_anxiety_pss_peak",
+        "weight": 0.09581693677169767,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "stress_anxiety_pss_slope",
+        "weight": 0.00651851256972414,
+        "sign": -1
+      },
+      {
+        "from": "therapy_rx",
+        "to": "stress_anxiety_pss_time_above_threshold",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "intervention_response_cost_effectiveness",
+        "weight": 0.36948323029643354,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "intervention_response_hrv_benefit",
+        "weight": 0.0020156006300453538,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "intervention_response_nature_dose_response",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "intervention_response_pss_benefit",
+        "weight": 0.13429294331928066,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "intervention_response_wellbeing_gain",
+        "weight": 0.00017947171144783153,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "physiological_arr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "physiological_arr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "physiological_dac_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "physiological_hrv_final",
+        "weight": 0.005188626865049169,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "physiological_hrv_mean",
+        "weight": 0.0020156006300453538,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "physiological_hrv_slope",
+        "weight": 0.0003647243914498975,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "physiological_rhr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "physiological_rhr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "sleep_quality_shape_cluster1_fraction",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "sleep_quality_sleep_debt_cumulative",
+        "weight": 3.506609531314272,
+        "sign": -1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "sleep_quality_sleep_quality_final",
+        "weight": 1.7437261966946933,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "sleep_quality_sleep_quality_mean",
+        "weight": 0.6932135317754267,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "sleep_quality_social_jetlag_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "sleep_quality_tst_final",
+        "weight": 0.3947903868347421,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "sleep_quality_tst_mean",
+        "weight": 0.23156855395463063,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "sleep_quality_tst_min",
+        "weight": 0.3905398554209679,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "stress_anxiety_anxiety_transitions_count",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "stress_anxiety_depression_final",
+        "weight": 0.08752538054883621,
+        "sign": -1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "stress_anxiety_depression_mean",
+        "weight": 0.03279811949781217,
+        "sign": -1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "stress_anxiety_gad7_days_above_10",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "stress_anxiety_gad7_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "stress_anxiety_gad7_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "stress_anxiety_pss_final",
+        "weight": 0.34977265543592007,
+        "sign": -1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "stress_anxiety_pss_mean",
+        "weight": 0.13429294331928066,
+        "sign": -1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "stress_anxiety_pss_peak",
+        "weight": 0.34977265543592007,
+        "sign": -1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "stress_anxiety_pss_slope",
+        "weight": 0.02448489723381193,
+        "sign": -1
+      },
+      {
+        "from": "sleep_hygiene",
+        "to": "stress_anxiety_pss_time_above_threshold",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "intervention_response_cost_effectiveness",
+        "weight": 0.12316107676352303,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "intervention_response_hrv_benefit",
+        "weight": 0.0006718668771554803,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "intervention_response_nature_dose_response",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "intervention_response_pss_benefit",
+        "weight": 0.04476431443904971,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "intervention_response_wellbeing_gain",
+        "weight": 5.982390547387695e-05,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "physiological_arr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "physiological_arr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "physiological_dac_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "physiological_hrv_final",
+        "weight": 0.0017295422921392856,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "physiological_hrv_mean",
+        "weight": 0.0006718668771554803,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "physiological_hrv_slope",
+        "weight": 0.00012157479708765277,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "physiological_rhr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "physiological_rhr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "sleep_quality_shape_cluster1_fraction",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "sleep_quality_sleep_debt_cumulative",
+        "weight": 1.1688698437712475,
+        "sign": -1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "sleep_quality_sleep_quality_final",
+        "weight": 0.5812420655630035,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "sleep_quality_sleep_quality_mean",
+        "weight": 0.231071177256581,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "sleep_quality_social_jetlag_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "sleep_quality_tst_final",
+        "weight": 0.13159679561169924,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "sleep_quality_tst_mean",
+        "weight": 0.07718951798487694,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "sleep_quality_tst_min",
+        "weight": 0.13017995180719666,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "stress_anxiety_anxiety_transitions_count",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "stress_anxiety_depression_final",
+        "weight": 0.02917512685076673,
+        "sign": -1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "stress_anxiety_depression_mean",
+        "weight": 0.010932706500099698,
+        "sign": -1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "stress_anxiety_gad7_days_above_10",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "stress_anxiety_gad7_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "stress_anxiety_gad7_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "stress_anxiety_pss_final",
+        "weight": 0.11659088514335281,
+        "sign": -1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "stress_anxiety_pss_mean",
+        "weight": 0.04476431443904971,
+        "sign": -1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "stress_anxiety_pss_peak",
+        "weight": 0.11659088514335281,
+        "sign": -1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "stress_anxiety_pss_slope",
+        "weight": 0.00816163241107136,
+        "sign": -1
+      },
+      {
+        "from": "caffeine_reduction",
+        "to": "stress_anxiety_pss_time_above_threshold",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "intervention_response_cost_effectiveness",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "intervention_response_hrv_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "intervention_response_nature_dose_response",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "intervention_response_pss_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "intervention_response_wellbeing_gain",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "physiological_arr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "physiological_arr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "physiological_dac_min",
+        "weight": 0.5786467589837357,
+        "sign": -1
+      },
+      {
+        "from": "academic_load",
+        "to": "physiological_hrv_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "physiological_hrv_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "physiological_hrv_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "physiological_rhr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "physiological_rhr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "sleep_quality_shape_cluster1_fraction",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "sleep_quality_sleep_debt_cumulative",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "sleep_quality_sleep_quality_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "sleep_quality_sleep_quality_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "sleep_quality_social_jetlag_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "sleep_quality_tst_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "sleep_quality_tst_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "sleep_quality_tst_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "stress_anxiety_anxiety_transitions_count",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "stress_anxiety_depression_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "stress_anxiety_depression_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "stress_anxiety_gad7_days_above_10",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "stress_anxiety_gad7_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "stress_anxiety_gad7_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "stress_anxiety_pss_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "stress_anxiety_pss_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "stress_anxiety_pss_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "stress_anxiety_pss_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "academic_load",
+        "to": "stress_anxiety_pss_time_above_threshold",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "intervention_response_cost_effectiveness",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "intervention_response_hrv_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "intervention_response_nature_dose_response",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "intervention_response_pss_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "intervention_response_wellbeing_gain",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "physiological_arr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "physiological_arr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "physiological_dac_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "physiological_hrv_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "physiological_hrv_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "physiological_hrv_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "physiological_rhr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "physiological_rhr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "sleep_quality_shape_cluster1_fraction",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "sleep_quality_sleep_debt_cumulative",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "sleep_quality_sleep_quality_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "sleep_quality_sleep_quality_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "sleep_quality_social_jetlag_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "sleep_quality_tst_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "sleep_quality_tst_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "sleep_quality_tst_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "stress_anxiety_anxiety_transitions_count",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "stress_anxiety_depression_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "stress_anxiety_depression_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "stress_anxiety_gad7_days_above_10",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "stress_anxiety_gad7_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "stress_anxiety_gad7_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "stress_anxiety_pss_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "stress_anxiety_pss_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "stress_anxiety_pss_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "stress_anxiety_pss_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "age",
+        "to": "stress_anxiety_pss_time_above_threshold",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "intervention_response_cost_effectiveness",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "intervention_response_hrv_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "intervention_response_nature_dose_response",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "intervention_response_pss_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "intervention_response_wellbeing_gain",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "physiological_arr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "physiological_arr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "physiological_dac_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "physiological_hrv_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "physiological_hrv_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "physiological_hrv_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "physiological_rhr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "physiological_rhr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "sleep_quality_shape_cluster1_fraction",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "sleep_quality_sleep_debt_cumulative",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "sleep_quality_sleep_quality_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "sleep_quality_sleep_quality_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "sleep_quality_social_jetlag_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "sleep_quality_tst_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "sleep_quality_tst_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "sleep_quality_tst_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "stress_anxiety_anxiety_transitions_count",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "stress_anxiety_depression_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "stress_anxiety_depression_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "stress_anxiety_gad7_days_above_10",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "stress_anxiety_gad7_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "stress_anxiety_gad7_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "stress_anxiety_pss_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "stress_anxiety_pss_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "stress_anxiety_pss_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "stress_anxiety_pss_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "gender",
+        "to": "stress_anxiety_pss_time_above_threshold",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "intervention_response_cost_effectiveness",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "intervention_response_hrv_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "intervention_response_nature_dose_response",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "intervention_response_pss_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "intervention_response_wellbeing_gain",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "physiological_arr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "physiological_arr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "physiological_dac_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "physiological_hrv_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "physiological_hrv_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "physiological_hrv_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "physiological_rhr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "physiological_rhr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "sleep_quality_shape_cluster1_fraction",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "sleep_quality_sleep_debt_cumulative",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "sleep_quality_sleep_quality_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "sleep_quality_sleep_quality_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "sleep_quality_social_jetlag_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "sleep_quality_tst_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "sleep_quality_tst_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "sleep_quality_tst_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "stress_anxiety_anxiety_transitions_count",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "stress_anxiety_depression_final",
+        "weight": 0.001471531788569782,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "stress_anxiety_depression_mean",
+        "weight": 0.0005435952055007019,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "stress_anxiety_gad7_days_above_10",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "stress_anxiety_gad7_mean",
+        "weight": 0.08338802719061232,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "stress_anxiety_gad7_peak",
+        "weight": 0.14728344410016306,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "stress_anxiety_pss_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "stress_anxiety_pss_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "stress_anxiety_pss_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "stress_anxiety_pss_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "emotional_stability",
+        "to": "stress_anxiety_pss_time_above_threshold",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "intervention_response_cost_effectiveness",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "intervention_response_hrv_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "intervention_response_nature_dose_response",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "intervention_response_pss_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "intervention_response_wellbeing_gain",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "physiological_arr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "physiological_arr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "physiological_dac_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "physiological_hrv_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "physiological_hrv_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "physiological_hrv_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "physiological_rhr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "physiological_rhr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "sleep_quality_shape_cluster1_fraction",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "sleep_quality_sleep_debt_cumulative",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "sleep_quality_sleep_quality_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "sleep_quality_sleep_quality_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "sleep_quality_social_jetlag_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "sleep_quality_tst_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "sleep_quality_tst_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "sleep_quality_tst_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "stress_anxiety_anxiety_transitions_count",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "stress_anxiety_depression_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "stress_anxiety_depression_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "stress_anxiety_gad7_days_above_10",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "stress_anxiety_gad7_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "stress_anxiety_gad7_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "stress_anxiety_pss_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "stress_anxiety_pss_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "stress_anxiety_pss_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "stress_anxiety_pss_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "trauma_load",
+        "to": "stress_anxiety_pss_time_above_threshold",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "intervention_response_cost_effectiveness",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "intervention_response_hrv_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "intervention_response_nature_dose_response",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "intervention_response_pss_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "intervention_response_wellbeing_gain",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "physiological_arr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "physiological_arr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "physiological_dac_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "physiological_hrv_final",
+        "weight": 3.597018531358742,
+        "sign": -1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "physiological_hrv_mean",
+        "weight": 3.795180446270763,
+        "sign": -1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "physiological_hrv_slope",
+        "weight": 0.026862803504442284,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "physiological_rhr_mean",
+        "weight": 1.8966006109302214,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "physiological_rhr_slope",
+        "weight": 0.013544506187738685,
+        "sign": -1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "sleep_quality_shape_cluster1_fraction",
+        "weight": 0.11997000821895032,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "sleep_quality_sleep_debt_cumulative",
+        "weight": 0.001631258408707481,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "sleep_quality_sleep_quality_final",
+        "weight": 0.000878668919312986,
+        "sign": -1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "sleep_quality_sleep_quality_mean",
+        "weight": 0.00025594136303652704,
+        "sign": -1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "sleep_quality_social_jetlag_mean",
+        "weight": 0.015046284360431539,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "sleep_quality_tst_final",
+        "weight": 0.0002773083155993561,
+        "sign": -1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "sleep_quality_tst_mean",
+        "weight": 0.00010772461207508854,
+        "sign": -1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "sleep_quality_tst_min",
+        "weight": 0.000269744721848042,
+        "sign": -1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "stress_anxiety_anxiety_transitions_count",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "stress_anxiety_depression_final",
+        "weight": 1.1439484898680519,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "stress_anxiety_depression_mean",
+        "weight": 1.3934401389958495,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "stress_anxiety_gad7_days_above_10",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "stress_anxiety_gad7_mean",
+        "weight": 2.68773939551874,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "stress_anxiety_gad7_peak",
+        "weight": 2.971526166346017,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "stress_anxiety_pss_final",
+        "weight": 0.23570086307458382,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "stress_anxiety_pss_mean",
+        "weight": 0.13303512349125413,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "stress_anxiety_pss_peak",
+        "weight": 0.23570086307458382,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "stress_anxiety_pss_slope",
+        "weight": 0.015581484743444965,
+        "sign": 1
+      },
+      {
+        "from": "mh_diagnosis",
+        "to": "stress_anxiety_pss_time_above_threshold",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "intervention_response_cost_effectiveness",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "intervention_response_hrv_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "intervention_response_nature_dose_response",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "intervention_response_pss_benefit",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "intervention_response_wellbeing_gain",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "physiological_arr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "physiological_arr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "physiological_dac_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "physiological_hrv_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "physiological_hrv_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "physiological_hrv_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "physiological_rhr_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "physiological_rhr_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "sleep_quality_shape_cluster1_fraction",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "sleep_quality_sleep_debt_cumulative",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "sleep_quality_sleep_quality_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "sleep_quality_sleep_quality_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "sleep_quality_social_jetlag_mean",
+        "weight": 0.3842593510736089,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "sleep_quality_tst_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "sleep_quality_tst_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "sleep_quality_tst_min",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "stress_anxiety_anxiety_transitions_count",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "stress_anxiety_depression_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "stress_anxiety_depression_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "stress_anxiety_gad7_days_above_10",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "stress_anxiety_gad7_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "stress_anxiety_gad7_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "stress_anxiety_pss_final",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "stress_anxiety_pss_mean",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "stress_anxiety_pss_peak",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "stress_anxiety_pss_slope",
+        "weight": 0.0,
+        "sign": 1
+      },
+      {
+        "from": "baseline_chronotype",
+        "to": "stress_anxiety_pss_time_above_threshold",
+        "weight": 0.0,
+        "sign": 1
+      }
+    ],
+    "param_correlation": [
+      {
+        "param_a": "nature_rx",
+        "param_b": "exercise_rx",
+        "correlation": -0.10380668568495771
+      },
+      {
+        "param_a": "nature_rx",
+        "param_b": "therapy_rx",
+        "correlation": 0.06894682158354332
+      },
+      {
+        "param_a": "nature_rx",
+        "param_b": "sleep_hygiene",
+        "correlation": -0.14752168689261946
+      },
+      {
+        "param_a": "nature_rx",
+        "param_b": "caffeine_reduction",
+        "correlation": -0.019282842734747105
+      },
+      {
+        "param_a": "nature_rx",
+        "param_b": "academic_load",
+        "correlation": -0.05507473222522984
+      },
+      {
+        "param_a": "nature_rx",
+        "param_b": "age",
+        "correlation": 0.23880941876647116
+      },
+      {
+        "param_a": "nature_rx",
+        "param_b": "gender",
+        "correlation": -0.19847381904047603
+      },
+      {
+        "param_a": "nature_rx",
+        "param_b": "emotional_stability",
+        "correlation": 0.07323626413562329
+      },
+      {
+        "param_a": "nature_rx",
+        "param_b": "trauma_load",
+        "correlation": -0.1610520878793848
+      },
+      {
+        "param_a": "nature_rx",
+        "param_b": "mh_diagnosis",
+        "correlation": -0.03860814602868562
+      },
+      {
+        "param_a": "nature_rx",
+        "param_b": "baseline_chronotype",
+        "correlation": -0.08010585631062737
+      },
+      {
+        "param_a": "exercise_rx",
+        "param_b": "therapy_rx",
+        "correlation": -0.05382287815544316
+      },
+      {
+        "param_a": "exercise_rx",
+        "param_b": "sleep_hygiene",
+        "correlation": 0.24646131004995353
+      },
+      {
+        "param_a": "exercise_rx",
+        "param_b": "caffeine_reduction",
+        "correlation": -0.29187513674553767
+      },
+      {
+        "param_a": "exercise_rx",
+        "param_b": "academic_load",
+        "correlation": 0.198275728887445
+      },
+      {
+        "param_a": "exercise_rx",
+        "param_b": "age",
+        "correlation": -0.14476139751961423
+      },
+      {
+        "param_a": "exercise_rx",
+        "param_b": "gender",
+        "correlation": -0.34373355323834137
+      },
+      {
+        "param_a": "exercise_rx",
+        "param_b": "emotional_stability",
+        "correlation": 0.051795459225223134
+      },
+      {
+        "param_a": "exercise_rx",
+        "param_b": "trauma_load",
+        "correlation": -0.18135985693758244
+      },
+      {
+        "param_a": "exercise_rx",
+        "param_b": "mh_diagnosis",
+        "correlation": 0.1026820602710098
+      },
+      {
+        "param_a": "exercise_rx",
+        "param_b": "baseline_chronotype",
+        "correlation": 0.11977261994726619
+      },
+      {
+        "param_a": "therapy_rx",
+        "param_b": "sleep_hygiene",
+        "correlation": 0.21848476720545262
+      },
+      {
+        "param_a": "therapy_rx",
+        "param_b": "caffeine_reduction",
+        "correlation": -0.2238117348887703
+      },
+      {
+        "param_a": "therapy_rx",
+        "param_b": "academic_load",
+        "correlation": -0.0333762065095327
+      },
+      {
+        "param_a": "therapy_rx",
+        "param_b": "age",
+        "correlation": -0.13403610580357983
+      },
+      {
+        "param_a": "therapy_rx",
+        "param_b": "gender",
+        "correlation": -0.08381256492574413
+      },
+      {
+        "param_a": "therapy_rx",
+        "param_b": "emotional_stability",
+        "correlation": 0.22606968251753798
+      },
+      {
+        "param_a": "therapy_rx",
+        "param_b": "trauma_load",
+        "correlation": -0.021815697429225664
+      },
+      {
+        "param_a": "therapy_rx",
+        "param_b": "mh_diagnosis",
+        "correlation": -0.10661001553397434
+      },
+      {
+        "param_a": "therapy_rx",
+        "param_b": "baseline_chronotype",
+        "correlation": 0.10926970171682454
+      },
+      {
+        "param_a": "sleep_hygiene",
+        "param_b": "caffeine_reduction",
+        "correlation": -0.15860249677821772
+      },
+      {
+        "param_a": "sleep_hygiene",
+        "param_b": "academic_load",
+        "correlation": 0.10637094675373536
+      },
+      {
+        "param_a": "sleep_hygiene",
+        "param_b": "age",
+        "correlation": -0.18345661791340367
+      },
+      {
+        "param_a": "sleep_hygiene",
+        "param_b": "gender",
+        "correlation": -0.25220913931678823
+      },
+      {
+        "param_a": "sleep_hygiene",
+        "param_b": "emotional_stability",
+        "correlation": -0.08408934857788912
+      },
+      {
+        "param_a": "sleep_hygiene",
+        "param_b": "trauma_load",
+        "correlation": -0.12899185197137636
+      },
+      {
+        "param_a": "sleep_hygiene",
+        "param_b": "mh_diagnosis",
+        "correlation": -0.25135138162090376
+      },
+      {
+        "param_a": "sleep_hygiene",
+        "param_b": "baseline_chronotype",
+        "correlation": 0.05024019266739228
+      },
+      {
+        "param_a": "caffeine_reduction",
+        "param_b": "academic_load",
+        "correlation": -0.1631666535217065
+      },
+      {
+        "param_a": "caffeine_reduction",
+        "param_b": "age",
+        "correlation": 0.1746607829006146
+      },
+      {
+        "param_a": "caffeine_reduction",
+        "param_b": "gender",
+        "correlation": 0.18092125295377415
+      },
+      {
+        "param_a": "caffeine_reduction",
+        "param_b": "emotional_stability",
+        "correlation": -0.012722778513355201
+      },
+      {
+        "param_a": "caffeine_reduction",
+        "param_b": "trauma_load",
+        "correlation": 0.0968810099924591
+      },
+      {
+        "param_a": "caffeine_reduction",
+        "param_b": "mh_diagnosis",
+        "correlation": 0.12369955883545514
+      },
+      {
+        "param_a": "caffeine_reduction",
+        "param_b": "baseline_chronotype",
+        "correlation": -0.1749412969510195
+      },
+      {
+        "param_a": "academic_load",
+        "param_b": "age",
+        "correlation": -0.029450972859803404
+      },
+      {
+        "param_a": "academic_load",
+        "param_b": "gender",
+        "correlation": -0.12597830682134695
+      },
+      {
+        "param_a": "academic_load",
+        "param_b": "emotional_stability",
+        "correlation": 0.1941862715724342
+      },
+      {
+        "param_a": "academic_load",
+        "param_b": "trauma_load",
+        "correlation": 0.13585706347704452
+      },
+      {
+        "param_a": "academic_load",
+        "param_b": "mh_diagnosis",
+        "correlation": 0.0075483484255453245
+      },
+      {
+        "param_a": "academic_load",
+        "param_b": "baseline_chronotype",
+        "correlation": 0.056121975079644865
+      },
+      {
+        "param_a": "age",
+        "param_b": "gender",
+        "correlation": 0.14876144965317023
+      },
+      {
+        "param_a": "age",
+        "param_b": "emotional_stability",
+        "correlation": 0.12907369454321002
+      },
+      {
+        "param_a": "age",
+        "param_b": "trauma_load",
+        "correlation": 0.13746062297627956
+      },
+      {
+        "param_a": "age",
+        "param_b": "mh_diagnosis",
+        "correlation": 0.053090311382677405
+      },
+      {
+        "param_a": "age",
+        "param_b": "baseline_chronotype",
+        "correlation": 0.016463780172637353
+      },
+      {
+        "param_a": "gender",
+        "param_b": "emotional_stability",
+        "correlation": -0.07660393254708807
+      },
+      {
+        "param_a": "gender",
+        "param_b": "trauma_load",
+        "correlation": -0.016650805961694406
+      },
+      {
+        "param_a": "gender",
+        "param_b": "mh_diagnosis",
+        "correlation": -0.10920746913413372
+      },
+      {
+        "param_a": "gender",
+        "param_b": "baseline_chronotype",
+        "correlation": -0.22639044311794917
+      },
+      {
+        "param_a": "emotional_stability",
+        "param_b": "trauma_load",
+        "correlation": 0.13956557594996882
+      },
+      {
+        "param_a": "emotional_stability",
+        "param_b": "mh_diagnosis",
+        "correlation": 0.04036851485975451
+      },
+      {
+        "param_a": "emotional_stability",
+        "param_b": "baseline_chronotype",
+        "correlation": -0.2121148556814134
+      },
+      {
+        "param_a": "trauma_load",
+        "param_b": "mh_diagnosis",
+        "correlation": 0.020511809840587574
+      },
+      {
+        "param_a": "trauma_load",
+        "param_b": "baseline_chronotype",
+        "correlation": 0.04012810861574614
+      },
+      {
+        "param_a": "mh_diagnosis",
+        "param_b": "baseline_chronotype",
+        "correlation": 0.2154887747872527
+      }
+    ],
+    "output_correlation": [
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "intervention_response_hrv_benefit",
+        "correlation": 0.4078576224312203
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "intervention_response_nature_dose_response",
+        "correlation": 0.7501992740342179
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "intervention_response_pss_benefit",
+        "correlation": 1.0
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "intervention_response_wellbeing_gain",
+        "correlation": 0.4057637025459855
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "physiological_arr_mean",
+        "correlation": -0.3281264477282507
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "physiological_arr_slope",
+        "correlation": -0.3281264477295506
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "physiological_dac_min",
+        "correlation": 0.3107882720659063
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "physiological_hrv_final",
+        "correlation": 0.3452546995034886
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "physiological_hrv_mean",
+        "correlation": 0.29204563216020246
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "physiological_hrv_slope",
+        "correlation": 0.3174676580870637
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "physiological_rhr_mean",
+        "correlation": -0.23255400950199745
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "physiological_rhr_slope",
+        "correlation": 0.23255400950156768
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": -0.23255400950208685
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": -0.8209944513455704
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": 0.8210161581928166
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": 0.8209396727198051
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": -0.02512040195714981
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": 0.8211624227642546
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": 0.8209944513455647
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": 0.8211509030990319
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.32027801232795594
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.26046465492858295
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.21873863862800655
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.20434397531631385
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.9537748559865286
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.909572963440953
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.9537748559865286
+      },
+      {
+        "output_a": "intervention_response_cost_effectiveness",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.9580319572842105
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "intervention_response_nature_dose_response",
+        "correlation": 0.673090969983313
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "intervention_response_pss_benefit",
+        "correlation": 0.40785762243122037
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "intervention_response_wellbeing_gain",
+        "correlation": 0.7127836653397527
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "physiological_arr_mean",
+        "correlation": -0.07007916809201244
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "physiological_arr_slope",
+        "correlation": -0.07007916809414344
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "physiological_dac_min",
+        "correlation": 0.6028965868778243
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "physiological_hrv_final",
+        "correlation": 0.3477944171625579
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "physiological_hrv_mean",
+        "correlation": 0.1955784848211934
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "physiological_hrv_slope",
+        "correlation": 0.9460509128130056
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "physiological_rhr_mean",
+        "correlation": -0.03988793828017147
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "physiological_rhr_slope",
+        "correlation": 0.03988793827975263
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": -0.039887938280221386
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": 0.14724464797085848
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": -0.1472092855308182
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": -0.14733384793822285
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": -0.08025670234559605
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": -0.1469719017458489
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": -0.14724464797086564
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": -0.1469905115041323
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.022313054125542346
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.03425262998288357
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.017384499091902487
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.0048065145346012856
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.3902269051278215
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.34749373488623037
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.3902269051278215
+      },
+      {
+        "output_a": "intervention_response_hrv_benefit",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.39300835461855305
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "intervention_response_pss_benefit",
+        "correlation": 0.750199274034218
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "intervention_response_wellbeing_gain",
+        "correlation": 0.5759638448760092
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "physiological_arr_mean",
+        "correlation": -0.32806917098851046
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "physiological_arr_slope",
+        "correlation": -0.32806917099032684
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "physiological_dac_min",
+        "correlation": 0.5488949558593891
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "physiological_hrv_final",
+        "correlation": 0.3738195272319033
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "physiological_hrv_mean",
+        "correlation": 0.27752062106290143
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "physiological_hrv_slope",
+        "correlation": 0.5895563227207128
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "physiological_rhr_mean",
+        "correlation": -0.1754810129193471
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "physiological_rhr_slope",
+        "correlation": 0.17548101291975746
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": -0.17548101291941032
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": -0.3412812850196756
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": 0.3413134790622228
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": 0.3412000826149285
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": 0.022389963315993286
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": 0.3415292040738632
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": 0.3412812850196666
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": 0.34151228211642015
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.20871837106370666
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.1860869101153749
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.12815988446497562
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.09877438369480582
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.7280124235357884
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.6827964229337089
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.7280124235357884
+      },
+      {
+        "output_a": "intervention_response_nature_dose_response",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.7306167967023044
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "intervention_response_wellbeing_gain",
+        "correlation": 0.4057637025459855
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "physiological_arr_mean",
+        "correlation": -0.3281264477282507
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "physiological_arr_slope",
+        "correlation": -0.3281264477295505
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "physiological_dac_min",
+        "correlation": 0.31078827206590626
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "physiological_hrv_final",
+        "correlation": 0.34525469950348864
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "physiological_hrv_mean",
+        "correlation": 0.29204563216020246
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "physiological_hrv_slope",
+        "correlation": 0.3174676580870637
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "physiological_rhr_mean",
+        "correlation": -0.23255400950199737
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "physiological_rhr_slope",
+        "correlation": 0.23255400950156768
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": -0.23255400950208696
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": -0.8209944513455705
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": 0.8210161581928166
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": 0.8209396727198048
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": -0.02512040195714981
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": 0.8211624227642547
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": 0.8209944513455645
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": 0.8211509030990322
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.3202780123279561
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.260464654928583
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.2187386386280065
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.20434397531631385
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.9537748559865287
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.9095729634409533
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.9537748559865287
+      },
+      {
+        "output_a": "intervention_response_pss_benefit",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.958031957284211
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "physiological_arr_mean",
+        "correlation": -0.01705558980602373
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "physiological_arr_slope",
+        "correlation": -0.017055589808465412
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "physiological_dac_min",
+        "correlation": 0.34489886519692226
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "physiological_hrv_final",
+        "correlation": 0.18240157846947305
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "physiological_hrv_mean",
+        "correlation": 0.07080593836385161
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "physiological_hrv_slope",
+        "correlation": 0.6973064381850576
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "physiological_rhr_mean",
+        "correlation": 0.041462943286527595
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "physiological_rhr_slope",
+        "correlation": -0.041462943286953394
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": 0.041462943286509416
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": -0.021462270502317627
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": 0.02148572593745464
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": 0.021403002022952193
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": 0.02180806905093506
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": 0.021646970427845975
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": 0.021462270502325704
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": 0.021634099613171698
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": 0.037505768654954155
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": 0.040379218853701535
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": 0.06571562515500227
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": 0.0764988550976278
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.3560499137198372
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.31103938539368947
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.3560499137198372
+      },
+      {
+        "output_a": "intervention_response_wellbeing_gain",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.3601736707851391
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "physiological_arr_slope",
+        "correlation": 1.0
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "physiological_dac_min",
+        "correlation": -0.09862725433090376
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "physiological_hrv_final",
+        "correlation": -0.12186528440803707
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "physiological_hrv_mean",
+        "correlation": -0.11559690436497468
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "physiological_hrv_slope",
+        "correlation": -0.03297475605786076
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "physiological_rhr_mean",
+        "correlation": 0.10661001553534687
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "physiological_rhr_slope",
+        "correlation": -0.10661001553529614
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": 0.10661001553533184
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": 0.18070726754846114
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": -0.18072028093561807
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": -0.1806744190294726
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": -0.10858277751834679
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": -0.1808083759750268
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": -0.18070726754845345
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": -0.1808013231296367
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": 0.1217172891829568
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": 0.1114838434366449
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": 0.037812782687217654
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": 7.818399698632104e-05
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": 0.33221273552121966
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": 0.3114021050380889
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": 0.33221273552121966
+      },
+      {
+        "output_a": "physiological_arr_mean",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.3304348506034243
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "physiological_dac_min",
+        "correlation": -0.09862725433068785
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "physiological_hrv_final",
+        "correlation": -0.12186528440892595
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "physiological_hrv_mean",
+        "correlation": -0.11559690436554583
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "physiological_hrv_slope",
+        "correlation": -0.032974756059826624
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "physiological_rhr_mean",
+        "correlation": 0.10661001553558912
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "physiological_rhr_slope",
+        "correlation": -0.10661001553553845
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": 0.10661001553557405
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": 0.18070726754900307
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": -0.18072028093616008
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": -0.18067441903001444
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": -0.10858277751713516
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": -0.1808083759755692
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": -0.18070726754899544
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": -0.18080132313017913
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": 0.12171728918325446
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": 0.11148384343690476
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": 0.037812782687411166
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": 7.818399714846153e-05
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": 0.3322127355224468
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": 0.31140210503924537
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": 0.3322127355224468
+      },
+      {
+        "output_a": "physiological_arr_slope",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.33043485060466377
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "physiological_hrv_final",
+        "correlation": 0.2209765029414383
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "physiological_hrv_mean",
+        "correlation": 0.12967642692159714
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "physiological_hrv_slope",
+        "correlation": 0.5666483017930543
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "physiological_rhr_mean",
+        "correlation": -0.03603321855215965
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "physiological_rhr_slope",
+        "correlation": 0.03603321855255058
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": -0.03603321855218925
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": 0.08751543922979475
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": -0.08748977204180974
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": -0.0875802020102472
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": -0.09757925379998957
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": -0.08731679629084367
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": -0.08751543922980841
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": -0.08733043167139759
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.026877600763670753
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.03308108055798484
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.05750252409676496
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.06706297993367885
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.3004816548402602
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.26719998687819635
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.3004816548402602
+      },
+      {
+        "output_a": "physiological_dac_min",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.30156745247619676
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "physiological_hrv_mean",
+        "correlation": 0.987485462311103
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "physiological_hrv_slope",
+        "correlation": 0.025248247388053927
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "physiological_rhr_mean",
+        "correlation": -0.9506973183448179
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "physiological_rhr_slope",
+        "correlation": 0.9506973183446871
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": -0.9506973183448332
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": -0.1728229650307586
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": 0.17285845776700187
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": 0.17273436626444624
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": -0.23179686330392932
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": 0.17306208961698108
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": 0.1728229650307319
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": 0.17304829195356097
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.9392162119498506
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.948362832527981
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.906179687861622
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.8531128888035606
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.602920700379598
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.6859228323476538
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.602920700379598
+      },
+      {
+        "output_a": "physiological_hrv_final",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.5921383650906888
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "physiological_hrv_slope",
+        "correlation": -0.13272736642490585
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "physiological_rhr_mean",
+        "correlation": -0.9877088037491087
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "physiological_rhr_slope",
+        "correlation": 0.987708803749043
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": -0.9877088037491163
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": -0.2050250642973674
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": 0.20505624017715215
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": 0.20494739748869184
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": -0.22897628078467644
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": 0.2052292959832668
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": 0.2050250642973406
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": 0.20521799527399998
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.9785961930494947
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.9861960339602478
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.9449210397986213
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.8915254357970673
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.5645888064313295
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.6586256482569219
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.5645888064313295
+      },
+      {
+        "output_a": "physiological_hrv_mean",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.552838956139482
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "physiological_rhr_mean",
+        "correlation": 0.2860179885743424
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "physiological_rhr_slope",
+        "correlation": -0.28601798857474464
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": 0.28601798857429456
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": 0.2146860220268829
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": -0.21466057975637856
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": -0.21475052078317902
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": -0.005383643690841103
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": -0.21447780217130447
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": -0.21468602202688136
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": -0.21449288092223
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": 0.3005523737078581
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": 0.2911451363617969
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": 0.29459771696953124
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": 0.2896547877399517
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.20937786464536282
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.1350126948899059
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.20937786464536282
+      },
+      {
+        "output_a": "physiological_hrv_slope",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.21608475714696004
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "physiological_rhr_slope",
+        "correlation": -1.0
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": 1.0
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": 0.23236441215752643
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": -0.23239054048145097
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": -0.23229949591999283
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": 0.2205079493374451
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": -0.23252902871769277
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": -0.23236441215750042
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": -0.2325204807258131
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": 0.9935164780255241
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": 0.9993568415449069
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": 0.9599910422025537
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": 0.9075920097504612
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": 0.5130530383939069
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": 0.61567631440669
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": 0.5130530383939069
+      },
+      {
+        "output_a": "physiological_rhr_mean",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.5006380259910593
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "sleep_quality_shape_cluster1_fraction",
+        "correlation": -0.9999999999999996
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": -0.23236441215716544
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": 0.23239054048108987
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": 0.23229949591963178
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": -0.2205079493371762
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": 0.2325290287173317
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": 0.23236441215713935
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": 0.23252048072545198
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.9935164780254808
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.999356841544893
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.9599910422025312
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.9075920097504271
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.5130530383935321
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.6156763144063416
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.5130530383935321
+      },
+      {
+        "output_a": "physiological_rhr_slope",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.5006380259906797
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "sleep_quality_sleep_debt_cumulative",
+        "correlation": 0.23236441215759915
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": -0.23239054048152374
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": -0.23229949592006552
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": 0.2205079493374203
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": -0.2325290287177655
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": -0.2323644121575731
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": -0.23252048072588571
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": 0.9935164780255324
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": 0.9993568415449096
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": 0.9599910422025615
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": 0.9075920097504723
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": 0.5130530383939853
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": 0.6156763144067623
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": 0.5130530383939853
+      },
+      {
+        "output_a": "sleep_quality_shape_cluster1_fraction",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.5006380259911387
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "sleep_quality_sleep_quality_final",
+        "correlation": -0.9999999989874826
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": -0.9999999936165546
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": -0.01778928977521993
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": -0.9999999458119325
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": -1.0
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": -0.9999999525991523
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": 0.3408504042806766
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": 0.2669134618840584
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": 0.24488065352780805
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": 0.24370907611788772
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": 0.7821073894758331
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": 0.7644594483523022
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": 0.7821073894758331
+      },
+      {
+        "output_a": "sleep_quality_sleep_debt_cumulative",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.7854289199803247
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "sleep_quality_sleep_quality_mean",
+        "correlation": 0.9999999875195693
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": 0.01778119598053864
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": 0.9999999595397909
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": 0.9999999989874827
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": 0.9999999653839597
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.34087566078855847
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.26693934617209164
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.2449041884312168
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.24373046519628822
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.7821353757005409
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.7644881990484083
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.7821353757005409
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_final",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.7854566758954393
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_mean",
+        "output_b": "sleep_quality_social_jetlag_mean",
+        "correlation": 0.017809467814656768
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_mean",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": 0.999999902389169
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_mean",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": 0.9999999936165542
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_mean",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": 0.9999999115483325
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_mean",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.3407876530056889
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_mean",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.26684915184808816
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_mean",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.2448222405236788
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_mean",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.24365602445130422
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_mean",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.7820370803038774
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_mean",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.7643873300390326
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_mean",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.7820370803038774
+      },
+      {
+        "output_a": "sleep_quality_sleep_quality_mean",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.7853591777109592
+      },
+      {
+        "output_a": "sleep_quality_social_jetlag_mean",
+        "output_b": "sleep_quality_tst_final",
+        "correlation": 0.017735703948633785
+      },
+      {
+        "output_a": "sleep_quality_social_jetlag_mean",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": 0.017789289775228756
+      },
+      {
+        "output_a": "sleep_quality_social_jetlag_mean",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": 0.01773870618878016
+      },
+      {
+        "output_a": "sleep_quality_social_jetlag_mean",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": 0.20859997604829997
+      },
+      {
+        "output_a": "sleep_quality_social_jetlag_mean",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": 0.21706302843395042
+      },
+      {
+        "output_a": "sleep_quality_social_jetlag_mean",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": 0.14983161869533018
+      },
+      {
+        "output_a": "sleep_quality_social_jetlag_mean",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": 0.10744914160267066
+      },
+      {
+        "output_a": "sleep_quality_social_jetlag_mean",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": 0.09123209199962629
+      },
+      {
+        "output_a": "sleep_quality_social_jetlag_mean",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": 0.11456668559664178
+      },
+      {
+        "output_a": "sleep_quality_social_jetlag_mean",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": 0.09123209199962629
+      },
+      {
+        "output_a": "sleep_quality_social_jetlag_mean",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.0886076908695217
+      },
+      {
+        "output_a": "sleep_quality_tst_final",
+        "output_b": "sleep_quality_tst_mean",
+        "correlation": 0.9999999458119327
+      },
+      {
+        "output_a": "sleep_quality_tst_final",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": 0.9999999997695486
+      },
+      {
+        "output_a": "sleep_quality_tst_final",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.34100952423941094
+      },
+      {
+        "output_a": "sleep_quality_tst_final",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.26707653113785423
+      },
+      {
+        "output_a": "sleep_quality_tst_final",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.24502669802287655
+      },
+      {
+        "output_a": "sleep_quality_tst_final",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.24384048181529344
+      },
+      {
+        "output_a": "sleep_quality_tst_final",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.7823123365860281
+      },
+      {
+        "output_a": "sleep_quality_tst_final",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.7646658746440267
+      },
+      {
+        "output_a": "sleep_quality_tst_final",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.7823123365860281
+      },
+      {
+        "output_a": "sleep_quality_tst_final",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.7856326109627346
+      },
+      {
+        "output_a": "sleep_quality_tst_mean",
+        "output_b": "sleep_quality_tst_min",
+        "correlation": 0.9999999525991522
+      },
+      {
+        "output_a": "sleep_quality_tst_mean",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.3408504042806513
+      },
+      {
+        "output_a": "sleep_quality_tst_mean",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.2669134618840326
+      },
+      {
+        "output_a": "sleep_quality_tst_mean",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.24488065352778193
+      },
+      {
+        "output_a": "sleep_quality_tst_mean",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.2437090761178623
+      },
+      {
+        "output_a": "sleep_quality_tst_mean",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.7821073894758194
+      },
+      {
+        "output_a": "sleep_quality_tst_mean",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.7644594483522863
+      },
+      {
+        "output_a": "sleep_quality_tst_mean",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.7821073894758194
+      },
+      {
+        "output_a": "sleep_quality_tst_mean",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.7854289199803117
+      },
+      {
+        "output_a": "sleep_quality_tst_min",
+        "output_b": "stress_anxiety_depression_final",
+        "correlation": -0.3410012621439565
+      },
+      {
+        "output_a": "sleep_quality_tst_min",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": -0.26706806441105846
+      },
+      {
+        "output_a": "sleep_quality_tst_min",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": -0.24501931839006147
+      },
+      {
+        "output_a": "sleep_quality_tst_min",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": -0.24383396458505754
+      },
+      {
+        "output_a": "sleep_quality_tst_min",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": -0.7822991278736343
+      },
+      {
+        "output_a": "sleep_quality_tst_min",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": -0.7646528890694113
+      },
+      {
+        "output_a": "sleep_quality_tst_min",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": -0.7822991278736343
+      },
+      {
+        "output_a": "sleep_quality_tst_min",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": -0.7856194503668149
+      },
+      {
+        "output_a": "stress_anxiety_depression_final",
+        "output_b": "stress_anxiety_depression_mean",
+        "correlation": 0.9969542482494599
+      },
+      {
+        "output_a": "stress_anxiety_depression_final",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": 0.9595239977293297
+      },
+      {
+        "output_a": "stress_anxiety_depression_final",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": 0.9103521052341405
+      },
+      {
+        "output_a": "stress_anxiety_depression_final",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": 0.5868425347935315
+      },
+      {
+        "output_a": "stress_anxiety_depression_final",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": 0.683981247977979
+      },
+      {
+        "output_a": "stress_anxiety_depression_final",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": 0.5868425347935315
+      },
+      {
+        "output_a": "stress_anxiety_depression_final",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.5752348476396657
+      },
+      {
+        "output_a": "stress_anxiety_depression_mean",
+        "output_b": "stress_anxiety_gad7_mean",
+        "correlation": 0.9611821583322315
+      },
+      {
+        "output_a": "stress_anxiety_depression_mean",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": 0.9097239130464988
+      },
+      {
+        "output_a": "stress_anxiety_depression_mean",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": 0.5369686385021948
+      },
+      {
+        "output_a": "stress_anxiety_depression_mean",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": 0.6380150696017816
+      },
+      {
+        "output_a": "stress_anxiety_depression_mean",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": 0.5369686385021948
+      },
+      {
+        "output_a": "stress_anxiety_depression_mean",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.5247903089210831
+      },
+      {
+        "output_a": "stress_anxiety_gad7_mean",
+        "output_b": "stress_anxiety_gad7_peak",
+        "correlation": 0.9888517854080887
+      },
+      {
+        "output_a": "stress_anxiety_gad7_mean",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": 0.48720012994583817
+      },
+      {
+        "output_a": "stress_anxiety_gad7_mean",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": 0.5873887756115868
+      },
+      {
+        "output_a": "stress_anxiety_gad7_mean",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": 0.48720012994583817
+      },
+      {
+        "output_a": "stress_anxiety_gad7_mean",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.475395133481526
+      },
+      {
+        "output_a": "stress_anxiety_gad7_peak",
+        "output_b": "stress_anxiety_pss_final",
+        "correlation": 0.4576922705714456
+      },
+      {
+        "output_a": "stress_anxiety_gad7_peak",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": 0.5533381261578881
+      },
+      {
+        "output_a": "stress_anxiety_gad7_peak",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": 0.4576922705714456
+      },
+      {
+        "output_a": "stress_anxiety_gad7_peak",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.4465947654997699
+      },
+      {
+        "output_a": "stress_anxiety_pss_final",
+        "output_b": "stress_anxiety_pss_mean",
+        "correlation": 0.9919662853994831
+      },
+      {
+        "output_a": "stress_anxiety_pss_final",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": 0.9999999999999999
+      },
+      {
+        "output_a": "stress_anxiety_pss_final",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.9998903912719445
+      },
+      {
+        "output_a": "stress_anxiety_pss_mean",
+        "output_b": "stress_anxiety_pss_peak",
+        "correlation": 0.9919662853994832
+      },
+      {
+        "output_a": "stress_anxiety_pss_mean",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.9901110258673387
+      },
+      {
+        "output_a": "stress_anxiety_pss_peak",
+        "output_b": "stress_anxiety_pss_slope",
+        "correlation": 0.9998903912719445
+      }
+    ]
+  },
+  "stability": {
+    "jaccard_overlap": 1.0,
+    "edge_survival_rate": 1.0
+  },
+  "rankings": {
+    "most_causal_params": [
+      "mh_diagnosis",
+      "sleep_hygiene",
+      "nature_rx",
+      "caffeine_reduction",
+      "academic_load",
+      "baseline_chronotype",
+      "therapy_rx",
+      "emotional_stability",
+      "exercise_rx",
+      "age",
+      "gender",
+      "trauma_load"
+    ],
+    "most_connected_outputs": [
+      "intervention_response_cost_effectiveness",
+      "intervention_response_hrv_benefit",
+      "intervention_response_nature_dose_response",
+      "intervention_response_pss_benefit",
+      "intervention_response_wellbeing_gain",
+      "physiological_arr_mean",
+      "physiological_arr_slope",
+      "physiological_dac_min",
+      "physiological_hrv_final",
+      "physiological_hrv_mean",
+      "physiological_hrv_slope",
+      "physiological_rhr_mean",
+      "physiological_rhr_slope",
+      "sleep_quality_shape_cluster1_fraction",
+      "sleep_quality_sleep_debt_cumulative",
+      "sleep_quality_sleep_quality_final",
+      "sleep_quality_sleep_quality_mean",
+      "sleep_quality_social_jetlag_mean",
+      "sleep_quality_tst_final",
+      "sleep_quality_tst_mean",
+      "sleep_quality_tst_min",
+      "stress_anxiety_anxiety_transitions_count",
+      "stress_anxiety_depression_final",
+      "stress_anxiety_depression_mean",
+      "stress_anxiety_gad7_days_above_10",
+      "stress_anxiety_gad7_mean",
+      "stress_anxiety_gad7_peak",
+      "stress_anxiety_pss_final",
+      "stress_anxiety_pss_mean",
+      "stress_anxiety_pss_peak",
+      "stress_anxiety_pss_slope",
+      "stress_anxiety_pss_time_above_threshold"
+    ]
+  },
+  "n_sims": 173
+}

@@ -1,0 +1,183 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                        LEMURS SIMULATOR ARCHITECTURE                       ║
+║            14-State ODE · 12D Input · 15-Week Semester · RK4               ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+                         ┌─────────────────────┐
+                         │    INPUT (12D)       │
+                         ├──────────┬──────────┤
+                         │ Patient  │ Interv.  │
+                         │ (6D)     │ (6D)     │
+                         │          │          │
+                         │ age      │ nature_rx│
+                         │ gender   │ exerc_rx │
+                         │ emot_stb │ thera_rx │
+                         │ trauma   │ slp_hyg  │
+                         │ mh_dx    │ caff_red │
+                         │ chronotyp│ acad_load│
+                         └────┬─────┴────┬─────┘
+                              │          │
+                              ▼          ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  constants.py                                                              │
+│  Coupling coefficients (9 papers) · Bounds · Grids · 8 Archetypes         │
+│  Semester calendar: is_weekday() · is_school_day() · spring_break(wk 8)   │
+└──────────────────────────────┬──────────────────────────────────────────────┘
+                               │
+                               ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  simulator.py          initial_state(patient) → 14D state vector           │
+│                                                                            │
+│  ┌───────────────── derivatives(state, t, intervention, patient) ────────┐ │
+│  │                                                                       │ │
+│  │  TIER 1: Sleep → Stress (Paper 3)                                     │ │
+│  │  ┌─────┐                                                              │ │
+│  │  │ TST ├──β=-0.877──┐                                                 │ │
+│  │  └─────┘            │    ┌─────┐                                      │ │
+│  │  ┌─────┐            ├───▶│ PSS │  (+2.956 if nonmale)                 │ │
+│  │  │ RHR ├──β=+0.055──┤    └──┬──┘                                      │ │
+│  │  └─────┘            │       │                                          │ │
+│  │  ┌─────┐            │       │                                          │ │
+│  │  │ HRV ├──β=-0.012──┤       │                                          │ │
+│  │  └─────┘            │       │                                          │ │
+│  │  ┌─────┐            │       │                                          │ │
+│  │  │ ARR ├──β=+0.270──┘       │                                          │ │
+│  │  └─────┘                    │                                          │ │
+│  │                             ▼                                          │ │
+│  │  TIER 2: Anxiety Markov (Paper 4)                                     │ │
+│  │  ┌──────────────────────────────────────────┐                         │ │
+│  │  │ GAD-7      threshold = 10                │                         │ │
+│  │  │                                          │                         │ │
+│  │  │  < 10: development risk ──▶ attractor 15 │                         │ │
+│  │  │        AOR: emot_stab(0.58)              │                         │ │
+│  │  │              mh_dx(2.10)                 │                         │ │
+│  │  │              trauma(1.80)                │                         │ │
+│  │  │              academic(1.68)              │                         │ │
+│  │  │                                          │                         │ │
+│  │  │  ≥ 10: recovery pull ────▶ attractor 5   │                         │ │
+│  │  │        hysteresis: 0.92^week (gets harder)│                        │ │
+│  │  └──────────────────────────────────────────┘                         │ │
+│  │                                                                       │ │
+│  │  TIER 3: Nature Mediation (Paper 7)                                   │ │
+│  │  ┌────────┐    ┌─────┐  β=-1.507   ┌─────┐  β=-0.618   ┌─────┐      │ │
+│  │  │Nature  ├───▶│ DAC ├─────────────▶│ PSS ├────────────▶│ HRV │      │ │
+│  │  │Engagem.│    │gate │              │     │  (mediation) │+9.13│      │ │
+│  │  └────────┘    └─────┘              └─────┘              └─────┘      │ │
+│  │                                                                       │ │
+│  │  TIER 4: Sleep Debt & Activity (Paper 6)                              │ │
+│  │  ┌─────────────────────────────────────┐                              │ │
+│  │  │ Weekday: TST -= 45 min (sleep debt) │                              │ │
+│  │  │ Weekend: TST recovers partially     │   ┌──────────┐              │ │
+│  │  │ Spring break: full recovery         ├──▶│ Activity │              │ │
+│  │  │                                     │   │ +13.7%   │              │ │
+│  │  │ school_flag · weekday_flag · gender  │   │ school   │              │ │
+│  │  └─────────────────────────────────────┘   └──────────┘              │ │
+│  │                                                                       │ │
+│  │  TIER 5: Chronotype & Sleep Shape (Papers 2, 6)                       │ │
+│  │  ┌───────────┐         ┌────────────┐                                 │ │
+│  │  │ Chronotype├────────▶│Social      │  0.924 * weekday_flag           │ │
+│  │  └───────────┘         │Jetlag      │                                 │ │
+│  │  ┌───────────┐         └────────────┘                                 │ │
+│  │  │ Gender    ├────────▶┌────────────┐                                 │ │
+│  │  │ MH dx    ├────────▶│SleepShape  │  female+MH → Cluster 1          │ │
+│  │  │ Trauma   ├────────▶│            │  male → weak coupling            │ │
+│  │  └───────────┘         └────────────┘                                 │ │
+│  │                                                                       │ │
+│  │  TIER 6: Attention Restoration (Paper 8)                              │ │
+│  │  ┌───────────────────────────────────────────────┐                    │ │
+│  │  │           academic_load                       │                    │ │
+│  │  │               │ depletes                      │                    │ │
+│  │  │               ▼                               │                    │ │
+│  │  │  ┌─────┐   ┌─────┐   ┌────────┐              │                    │ │
+│  │  │  │Nat. ├──▶│ DAC ├──▶│quality │              │                    │ │
+│  │  │  │Eng. │   │     │   │gate    │              │                    │ │
+│  │  │  └─────┘   └─────┘   └────────┘              │                    │ │
+│  │  │  DAC→0 = burnout: nature has no effect        │                    │ │
+│  │  │  (explains GPS ≠ engagement paradox)          │                    │ │
+│  │  └───────────────────────────────────────────────┘                    │ │
+│  │                                                                       │ │
+│  │  CROSS-TIER:                                                          │ │
+│  │    Depression ← PSS + GAD7 + SleepQuality                             │ │
+│  │    WEMWBS    ← nature + social + exercise (inverse stress)            │ │
+│  │    RHR, HRV, ARR: slow trait reversion                                │ │
+│  └───────────────────────────────────────────────────────────────────────┘ │
+│                                                                            │
+│  _rk4_step(state, t, dt) → clamped 14D state                             │
+│  simulate() → {states: (106,14), times: (106,), intervention, patient}    │
+└──────────────────────────────┬──────────────────────────────────────────────┘
+                               │
+                               ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│  analytics.py           compute_all(result, baseline) → 4 pillars          │
+│                                                                            │
+│  ┌─────────────┐ ┌──────────────┐ ┌──────────────┐ ┌───────────────────┐  │
+│  │ PILLAR 1    │ │ PILLAR 2     │ │ PILLAR 3     │ │ PILLAR 4          │  │
+│  │ Sleep       │ │ Stress &     │ │ Physiological│ │ Intervention      │  │
+│  │ Quality     │ │ Anxiety      │ │              │ │ Response          │  │
+│  │             │ │              │ │              │ │                   │  │
+│  │ tst_mean    │ │ pss_mean     │ │ rhr_mean     │ │ pss_benefit       │  │
+│  │ tst_final   │ │ pss_slope    │ │ hrv_mean     │ │ hrv_benefit       │  │
+│  │ sleep_debt  │ │ gad7_peak    │ │ arr_slope    │ │ wellbeing_gain    │  │
+│  │ sjl_mean    │ │ gad7_days>10 │ │ dac_min      │ │ dose_response     │  │
+│  │ shape_frac  │ │ transitions  │ │ hrv_final    │ │ cost_effective    │  │
+│  └─────────────┘ └──────────────┘ └──────────────┘ └───────────────────┘  │
+└──────────────────────────────┬──────────────────────────────────────────────┘
+                               │
+                    ┌──────────┴──────────┐
+                    ▼                     ▼
+  ┌──────────────────────┐  ┌──────────────────────────┐
+  │ lemurs_simulator.py  │  │ visualize.py             │
+  │ Zimmerman Protocol   │  │                          │
+  │                      │  │ ┌──────┬──────┐          │
+  │ param_spec() → 12D   │  │ │Sleep │Stress│          │
+  │ run({}) → 32 metrics │  │ │ TST  │ PSS  │          │
+  │                      │  │ │ SQ   │ GAD7 │          │
+  │ pillar_metric format │  │ │ SJL  │ Dep  │          │
+  └───────┬──────────────┘  │ ├──────┼──────┤          │
+          │                 │ │Physio│Behav.│          │
+          ▼                 │ │ RHR  │ Act  │          │
+  ┌───────────────┐         │ │ HRV  │ Nat  │          │
+  │ zimmerman_    │         │ │ ARR  │ DAC  │          │
+  │ bridge.py     │         │ └──────┴──────┘          │
+  │ 12D or 6D     │         │ + spring break band      │
+  │ baseline cache│         │ + GAD-7 ≥ 10 threshold   │
+  └───────┬───────┘         └──────────────────────────┘
+          │
+          ▼
+  ┌───────────────┐
+  │ kcramer_      │
+  │ bridge.py     │
+  │               │
+  │ 7 banks ×     │
+  │ 19 scenarios  │
+  │               │
+  │ academic (3)  │
+  │ sleep    (3)  │
+  │ social   (3)  │
+  │ seasonal (2)  │
+  │ digital  (2)  │
+  │ health   (3)  │
+  │ combined (3)  │
+  └───────────────┘
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  SEMESTER TIMELINE (105 daily steps over 15 weeks)                         ║
+║                                                                            ║
+║  Wk: 1  2  3  4  5  6  7 [8=BREAK] 9  10  11  12  13  14  15             ║
+║      ├──┼──┼──┼──┼──┼──┼──╔════╗──┼──┼───┼───┼───┼───┼───┤              ║
+║      │  school days: M-F  ║REST║  school days: M-F         │              ║
+║      │  sleep debt: -45m  ║    ║  sleep debt resumes       │              ║
+║      │  academic forcing  ║    ║  GAD-7 hysteresis deepens │              ║
+║      └────────────────────╚════╝──────────────────────────-┘              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║  EXTERNAL COMPATIBILITY                                                    ║
+║                                                                            ║
+║  zimmerman-toolkit ──▶ LEMURSSimulator.run() + param_spec()                ║
+║  cramer-toolkit   ──▶ kcramer_bridge.py (19 stress scenarios)              ║
+║                                                                            ║
+║  Sibling simulators (same protocol):                                       ║
+║    grief-simulator (11D, 10yr) · how-to-live-much-longer (8D, 30yr)        ║
+║    stock-simulator (7D, 5yr)                                               ║
+╚══════════════════════════════════════════════════════════════════════════════╝

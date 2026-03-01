@@ -1,0 +1,134 @@
+{
+  "pairs": [
+    {
+      "found": false,
+      "base_outcome": "healthy",
+      "flipped_outcome": null,
+      "tipping_k": null,
+      "flip_size": null,
+      "tipping_params": null,
+      "edit_path_applied": [],
+      "n_sims": 2
+    },
+    {
+      "found": false,
+      "base_outcome": "healthy",
+      "flipped_outcome": null,
+      "tipping_k": null,
+      "flip_size": null,
+      "tipping_params": null,
+      "edit_path_applied": [],
+      "n_sims": 2
+    },
+    {
+      "found": false,
+      "base_outcome": "healthy",
+      "flipped_outcome": null,
+      "tipping_k": null,
+      "flip_size": null,
+      "tipping_params": null,
+      "edit_path_applied": [],
+      "n_sims": 2
+    },
+    {
+      "found": false,
+      "base_outcome": "healthy",
+      "flipped_outcome": null,
+      "tipping_k": null,
+      "flip_size": null,
+      "tipping_params": null,
+      "edit_path_applied": [],
+      "n_sims": 2
+    },
+    {
+      "found": false,
+      "base_outcome": "healthy",
+      "flipped_outcome": null,
+      "tipping_k": null,
+      "flip_size": null,
+      "tipping_params": null,
+      "edit_path_applied": [],
+      "n_sims": 2
+    },
+    {
+      "found": false,
+      "base_outcome": "healthy",
+      "flipped_outcome": null,
+      "tipping_k": null,
+      "flip_size": null,
+      "tipping_params": null,
+      "edit_path_applied": [],
+      "n_sims": 2
+    },
+    {
+      "found": false,
+      "base_outcome": "healthy",
+      "flipped_outcome": null,
+      "tipping_k": null,
+      "flip_size": null,
+      "tipping_params": null,
+      "edit_path_applied": [],
+      "n_sims": 2
+    },
+    {
+      "found": false,
+      "base_outcome": "healthy",
+      "flipped_outcome": null,
+      "tipping_k": null,
+      "flip_size": null,
+      "tipping_params": null,
+      "edit_path_applied": [],
+      "n_sims": 2
+    },
+    {
+      "found": false,
+      "base_outcome": "healthy",
+      "flipped_outcome": null,
+      "tipping_k": null,
+      "flip_size": null,
+      "tipping_params": null,
+      "edit_path_applied": [],
+      "n_sims": 2
+    },
+    {
+      "found": false,
+      "base_outcome": "healthy",
+      "flipped_outcome": null,
+      "tipping_k": null,
+      "flip_size": null,
+      "tipping_params": null,
+      "edit_path_applied": [],
+      "n_sims": 2
+    }
+  ],
+  "mean_flip_size": null,
+  "param_tipping_frequency": {
+    "nature_rx": 0.0,
+    "exercise_rx": 0.0,
+    "therapy_rx": 0.0,
+    "sleep_hygiene": 0.0,
+    "caffeine_reduction": 0.0,
+    "academic_load": 0.0,
+    "age": 0.0,
+    "gender": 0.0,
+    "emotional_stability": 0.0,
+    "trauma_load": 0.0,
+    "mh_diagnosis": 0.0,
+    "baseline_chronotype": 0.0
+  },
+  "most_fragile_params": [
+    "nature_rx",
+    "exercise_rx",
+    "therapy_rx",
+    "sleep_hygiene",
+    "caffeine_reduction",
+    "academic_load",
+    "age",
+    "gender",
+    "emotional_stability",
+    "trauma_load",
+    "mh_diagnosis",
+    "baseline_chronotype"
+  ],
+  "n_sims": 20
+}
